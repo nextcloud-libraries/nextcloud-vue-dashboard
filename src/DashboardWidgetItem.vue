@@ -162,7 +162,7 @@ export default {
                 </template>
             </Popover>
         </div-->
-        <a :href="item.targetUrl" target="_blank" class="item-list__entry">
+        <a :href="item.targetUrl" target="_blank" :class="{'item-list__entry': true, 'noPadRight': gotMenu}">
             <Avatar
                 class="item-avatar"
                 :size="44"
@@ -242,10 +242,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.noPadRight {
+    padding-right: 0px !important;
+}
 div .item-list__entry {
     display: flex;
     align-items: flex-start;
-    padding: 8px;
+    padding-right: 8px;
+    padding-left: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 
     &:hover,
     &:focus {
