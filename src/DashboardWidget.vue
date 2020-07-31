@@ -252,9 +252,8 @@ export default {
 
 <template>
     <div>
-        <slot name="header" />
         <ul>
-            <li v-for="item in items" :key="item.id">
+            <li v-for="item in displayedItems" :key="item.id">
                 <slot name="default" :item="item">
                     <DashboardWidgetItem
                         :item="item"
@@ -274,7 +273,6 @@ export default {
         <p v-else-if="showMore" class="more">
             <span @click="$emit('moreClicked')">{{ t('core', 'Show more items...') }}</span>
         </p>
-        <slot name="footer" />
     </div>
 </template>
 
@@ -330,6 +328,10 @@ export default {
                 }
             }
             return h
+        },
+        displayedItems() {
+            const nbItems = (this.showMore && this.items.length >= 7) ? 6 : 7
+            return this.items.slice(0, nbItems)
         },
     },
 
