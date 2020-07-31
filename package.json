@@ -23,8 +23,8 @@
 		"docs:dev": "vuepress dev docs",
 		"docs:build": "vuepress build docs"
 	},
-	"main": "dist/vue-dashboardg.js",
-	"library": "dist/vue-dashboardg.js",
+	"main": "dist/vue-dashboard.js",
+	"library": "dist/vue-dashboard.js",
 	"files": [
 		"LICENSE",
 		"README.md",
@@ -35,6 +35,7 @@
 		"vue": "^2.6.11"
 	},
 	"dependencies": {
+		"@nextcloud/vue": "^2.3.0",
 		"core-js": "^3.6.4",
 		"vue": "^2.6.11"
 	},

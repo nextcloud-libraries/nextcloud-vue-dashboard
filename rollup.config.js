@@ -17,6 +17,7 @@ export default {
 	external: id => {
 		const externals = [
 			'vue',
+			'@nextcloud/vue'
 		]
 		if (externals.includes(id)) {
 			return true
@@ -24,7 +25,7 @@ export default {
 		return false
 	},
 	output: {
-		file: 'dist/vue-richtext.js',
+		file: 'dist/vue-dashboard.js',
 		format: 'esm'
 	},
 	plugins: [
