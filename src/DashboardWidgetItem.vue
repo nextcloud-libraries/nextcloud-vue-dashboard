@@ -192,6 +192,7 @@ export default {
         <a :href="item.targetUrl" target="_blank" class="item-list__entry">
             <Avatar
                 class="item-avatar"
+                :size="44"
                 :url="item.avatarUrl"
                 :user="item.avatarUsername"
                 />
