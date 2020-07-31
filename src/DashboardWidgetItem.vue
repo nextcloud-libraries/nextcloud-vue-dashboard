@@ -25,7 +25,6 @@ You can also use it wherever you want.
 
 It displays the item given as a prop with optional:
 * context menu
-* popover content
 
 ## Usage
 
@@ -62,31 +61,12 @@ const itemMenu = {
 }
 ```
 
-### Popover
-If you define the "popover" slot and set "popoverEnabled" prop to true, a Popover (from Nextcloud-Vue)
-will be displayed when hovering on the item.
-
-The "popover" slot provides the item to the template you define. So, in the parent component,
-you can define something like that to enable the popover display:
-
-```vue
-<template v-slot:popover="{ item }">
-    <h3>{{ item.subText }}</h3>
-    {{ item.mainText }}<br/>
-    {{ item.targetUrl }}
-</template>
-```
-
 ### All props
 * itemMenu: An object containing context menu entries that will be displayed for each items
 * item: An object containing the item itself (specific structure must be respected)
-* popoverEnabled: A boolean to enable popover display when hovering items
 
 ### Events
 * for each menu item, an event named like its key is emitted with the item as a parameter
-
-### Slots
-* popover: This slot passes the item to the template so you an access item data when defining it.
 
 ## Simplest example
 ```vue
@@ -127,14 +107,7 @@ export default {
         :itemMenu="itemMenu"
         @hide="onHide"
         @markDone="onMarkDone"
-        :popoverEnabled="true"
-        >
-        <template v-slot:popover="{ item }">
-            <h3>{{ item.subText }}</h3>
-            {{ item.mainText }}<br/>
-            The target URL is actually {{ item.targetUrl }} you know
-        </template>
-    </DashboardWidgetItem>
+        />
 </template>
 
 <script>
@@ -180,7 +153,7 @@ export default {
 
 <template>
     <div @mouseover="hovered = true" @mouseleave="hovered = false" >
-        <div class="popover-container">
+        <!--div class="popover-container">
             <Popover :open="popoverEnabled && hovered" placement="top" class="content-popover" offset="40">
                 <template>
                     <slot name="popover" :item="item">
@@ -188,7 +161,7 @@ export default {
                     </slot>
                 </template>
             </Popover>
-        </div>
+        </div-->
         <a :href="item.targetUrl" target="_blank" class="item-list__entry">
             <Avatar
                 class="item-avatar"
@@ -219,11 +192,14 @@ export default {
 </template>
 
 <script>
-import { Avatar, Popover, Actions, ActionText } from '@nextcloud/vue'
+import {
+    //Popover
+    Avatar, Actions, ActionText } from '@nextcloud/vue'
 export default {
     name: 'DashboardWidgetItem',
     components: {
-        Avatar, Popover, Actions, ActionText
+        //Popover
+        Avatar, Actions, ActionText
     },
 
     props: {
@@ -235,10 +211,10 @@ export default {
             type: Object,
             default: () => { return {} }
         },
-        popoverEnabled: {
+        /*popoverEnabled: {
             type: Boolean,
             default: false,
-        },
+        },*/
     },
 
     mounted() {
@@ -322,6 +298,7 @@ div .item-list__entry {
         margin: 0;
     }
 }
+/*
 .content-popover {
     height: 0px;
     width: 0px;
@@ -332,4 +309,5 @@ div .item-list__entry {
     width: 100%;
     height: 0px;
 }
+*/
 </style>

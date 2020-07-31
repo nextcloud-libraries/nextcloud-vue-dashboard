@@ -28,9 +28,6 @@ You can set this component in loading mode.
 
 The default item rendering can be overridden with the default slot.
 
-If you keep the default item rendering (using DashboardWidgetItem component), you can use the "popover"
-slot to define what should be displayed when hovering items. This slot is forwarded in DashboardWidgetItem.
-
 Items can have a context menu.
 
 ## Usage
@@ -91,7 +88,6 @@ const itemMenu = {
 * loading: A boolean to put the widget in a loading state
 * itemMenu: An object containing context menu entries that will be displayed for each items
 * items: An object containing the items themselves (specific structure must be respected except if you override item rendering with the default slot)
-* popoverEnabled: A boolean to enable popover display when hovering items
 
 ### Events
 * moreClicked: The "show more" text was clicked
@@ -102,15 +98,7 @@ const itemMenu = {
 * header (optional): Something to display on top of the widget
 * empty-content (optional): What to display when the item list is empty
 * footer (optional): Something to display
-* popover (optional): Popover content of items (if you didn't override the item with the default slot)
 
-Here is an example of popover definition:
-```vue
-<template v-slot:popover="{ item }">
-    <h3>{{ item.subText }}</h3>
-    {{ item.mainText }}<br/>
-    {{ item.targetUrl }}
-</template>
 ```
 
 ## Simplest example
@@ -161,15 +149,8 @@ export default {
         @hide="onHide"
         @markDone="onMarkDone"
         :loading="state === 'loading'"
-        :popoverEnabled="true"
         >
 
-        <template v-slot:popover="{ item }">
-            <h3>{{ item.subText }}</h3>
-            {{ item.mainText }}<br/>
-            {{ item.popFormattedDate }}<br/><br/>
-            {{ item.popContent }}
-        </template>
         <template v-slot:empty-content>
             Nothing to display
         </template>
@@ -187,9 +168,6 @@ const myItems = [
         overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor),
         mainText: 'First item text',
         subText: 'First item subtext',
-        // for popover
-        popFormattedDate: 'yesterday 4am',
-        popContent: 'the main popup content',
     },
     {
         id: '2',
@@ -198,9 +176,6 @@ const myItems = [
         overlayIconUrl: generateUrl('/svg/core/actions/add?color=' + this.themingColor),
         mainText: 'Second item text',
         subText: 'Second item subtext',
-        // for popover
-        popFormattedDate: 'today 2pm',
-        popContent: 'another popup content',
     },
 ]
 
@@ -258,12 +233,11 @@ export default {
                     <DashboardWidgetItem
                         :item="item"
                         :itemMenu="itemMenu"
-                        :popoverEnabled="popoverEnabled"
                         v-on="handlers">
-                        <!-- here we forward the popover slot to the item component -->
+                        <!-- here we forward the popover slot to the item component >
                         <template v-slot:popover="{ item }">
                             <slot name="popover" :item="item" />
-                        </template>
+                        </template-->
                     </DashboardWidgetItem>
                 </slot>
             </li>
@@ -298,10 +272,10 @@ export default {
             type: Object,
             default: () => { return {} }
         },
-        popoverEnabled: {
+        /*popoverEnabled: {
             type: Boolean,
             default: false,
-        },
+        },*/
     },
     components: {
         DashboardWidgetItem
