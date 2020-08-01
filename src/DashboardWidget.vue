@@ -244,7 +244,7 @@ export default {
         </ul>
         <div v-if="loading" class="icon-loading-small"></div>
         <slot v-else-if="items.length === 0" name="empty-content" />
-        <p v-else-if="showMore" class="more">
+        <p v-else-if="showMore && items.length >= maxItemNumber" class="more">
             <span @click="$emit('moreClicked')">{{ t('core', 'Show more items...') }}</span>
         </p>
     </div>
@@ -286,6 +286,7 @@ export default {
 
     data() {
         return {
+            maxItemNumber: 7
         }
     },
 
@@ -304,7 +305,9 @@ export default {
             return h
         },
         displayedItems() {
-            const nbItems = (this.showMore && this.items.length >= 7) ? 6 : 7
+            const nbItems = (this.showMore && this.items.length >= this.maxItemNumber) ?
+                this.maxItemNumber - 1 :
+                this.maxItemNumber
             return this.items.slice(0, nbItems)
         },
     },
