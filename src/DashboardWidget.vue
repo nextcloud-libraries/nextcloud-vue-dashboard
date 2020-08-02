@@ -242,7 +242,16 @@ export default {
                 </slot>
             </li>
         </ul>
-        <div v-if="loading" class="icon-loading-small"></div>
+        <div v-if="loading">
+            <div class="icon-loading-small loading-icon"></div>
+            <div v-for="i in 5" :key="i" class="item-list__entry">
+                <Avatar class="item-avatar" :size="44" />
+                <div class="item__details">
+                    <h3> &nbsp </h3>
+                    <p class="message"> &nbsp </p>
+                </div>
+            </div>
+        </div>
         <slot v-else-if="items.length === 0" name="empty-content" />
         <p v-else-if="showMore && items.length >= maxItemNumber" class="more">
             <span @click="$emit('moreClicked')">{{ t('core', 'Show more items...') }}</span>
@@ -252,6 +261,7 @@ export default {
 
 <script>
 import DashboardWidgetItem from './DashboardWidgetItem'
+import { Avatar } from '@nextcloud/vue'
 export default {
     name: 'DashboardWidget',
 
@@ -278,7 +288,7 @@ export default {
         },*/
     },
     components: {
-        DashboardWidgetItem
+        DashboardWidgetItem, Avatar
     },
 
     created() {
@@ -324,5 +334,48 @@ export default {
 .more {
     text-align: center;
     color: var(--color-text-lighter)
+}
+
+/* skeleton */
+.loading-icon {
+    margin-bottom: 10px;
+}
+div .item-list__entry {
+    display: flex;
+    align-items: flex-start;
+    padding-right: 8px;
+    padding-left: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    .item-avatar {
+        position: relative;
+        margin-top: auto;
+        margin-bottom: auto;
+        background-color: var(--color-background-dark) !important;
+    }
+    .item__details {
+        padding-left: 8px;
+        max-height: 44px;
+        flex-grow: 1;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+
+        h3,
+        .message {
+            white-space: nowrap;
+            background-color: var(--color-background-dark);
+        }
+        h3 {
+            font-size: 100%;
+            margin: 0;
+        }
+        .message {
+            width: 80%;
+            height: 15px;
+            margin-top: 5px;
+        }
+    }
 }
 </style>
