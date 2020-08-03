@@ -178,7 +178,7 @@ export default {
                     {{ item.subText }}
                 </p>
             </div>
-            <Actions v-if="gotMenu" :forceMenu="true">
+            <Actions v-if="gotMenu" :forceMenu="true" menuAlign="right">
                 <ActionText v-for="(m, id) in itemMenu"
                     :key="id"
                     :title="m.text"
