@@ -171,7 +171,7 @@ export default {
                 />
             <img class="item-icon" :src="item.overlayIconUrl"/>
             <div class="item__details">
-                <h3>
+                <h3 :title="item.mainText">
                     {{ item.mainText }}
                 </h3>
                 <p class="message" :title="item.subText">
