@@ -328,6 +328,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.more span {
+    line-height: 55px;
+}
 .more * {
     cursor: pointer;
 }
