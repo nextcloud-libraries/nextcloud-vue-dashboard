@@ -179,7 +179,7 @@ export default {
                 </p>
             </div>
             <Actions v-if="gotMenu" :forceMenu="true" menuAlign="right">
-                <ActionText v-for="(m, id) in itemMenu"
+                <ActionButton v-for="(m, id) in itemMenu"
                     :key="id"
                     :title="m.text"
                     :icon="m.icon"
@@ -194,12 +194,12 @@ export default {
 <script>
 import {
     //Popover
-    Avatar, Actions, ActionText } from '@nextcloud/vue'
+    Avatar, Actions, ActionButton } from '@nextcloud/vue'
 export default {
     name: 'DashboardWidgetItem',
     components: {
         //Popover
-        Avatar, Actions, ActionText
+        Avatar, Actions, ActionButton
     },
 
     props: {
