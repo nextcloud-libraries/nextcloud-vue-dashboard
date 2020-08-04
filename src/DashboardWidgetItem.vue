@@ -162,7 +162,7 @@ export default {
                 </template>
             </Popover>
         </div-->
-        <a :href="item.targetUrl" target="_blank" :class="{'item-list__entry': true, 'noPadRight': gotMenu}">
+        <a :href="item.targetUrl" target="_blank" :class="{'item-list__entry': true, 'item-list__entry--has-actions-menu': gotMenu}">
             <Avatar
                 class="item-avatar"
                 :size="44"
@@ -242,16 +242,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.noPadRight {
-    padding-right: 0px !important;
-}
-div .item-list__entry {
+.item-list__entry {
     display: flex;
     align-items: flex-start;
     padding-right: 8px;
     padding-left: 8px;
     padding-top: 8px;
     padding-bottom: 8px;
+
+    // Account for action menu
+    &--has-actions-menu {
+        padding-right: 0px !important;
+    }
 
     &:hover,
     &:focus {
@@ -292,7 +294,7 @@ div .item-list__entry {
         }
     }
 
-    img.item-icon {
+    .item-icon {
         position: relative;
         width: 14px;
         height: 14px;
