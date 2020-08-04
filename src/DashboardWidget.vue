@@ -243,7 +243,6 @@ export default {
             </li>
         </ul>
         <div v-if="loading">
-            <div class="icon-loading-small loading-icon"></div>
             <div v-for="i in 5" :key="i" class="item-list__entry">
                 <Avatar class="item-avatar" :size="44" />
                 <div class="item__details">
@@ -347,10 +346,7 @@ export default {
 }
 
 /* skeleton */
-.loading-icon {
-    margin-bottom: 10px;
-}
-div .item-list__entry {
+.item-list__entry {
     display: flex;
     align-items: flex-start;
     padding-right: 8px;
