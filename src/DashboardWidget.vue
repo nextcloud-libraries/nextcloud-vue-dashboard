@@ -243,7 +243,7 @@ export default {
             </li>
         </ul>
         <div v-if="loading">
-            <div v-for="i in 5" :key="i" class="item-list__entry">
+            <div v-for="i in 7" :key="i" class="item-list__entry">
                 <Avatar class="item-avatar" :size="44" />
                 <div class="item__details">
                     <h3> &nbsp </h3>
