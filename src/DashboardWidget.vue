@@ -253,9 +253,12 @@ export default {
             </div>
         </div>
         <slot v-else-if="items.length === 0" name="empty-content" />
-        <p v-else-if="showMore && items.length >= maxItemNumber" class="more">
-            <span @click="$emit('moreClicked')">{{ t('core', 'Show more items...') }}</span>
-        </p>
+        <a v-else-if="showMore && items.length >= maxItemNumber"
+            @click="$emit('moreClicked')"
+            @keyup.enter="$emit('moreClicked')"
+            class="more" tabindex="0">
+            {{ t('core', 'Show more items …') }}
+        </a>
     </div>
 </template>
 
@@ -328,15 +331,19 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.more span {
-    line-height: 55px;
-}
-.more * {
-    cursor: pointer;
-}
 .more {
+    display: block;
     text-align: center;
-    color: var(--color-text-lighter)
+    color: var(--color-text-maxcontrast);
+    line-height: 60px;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        background-color: var(--color-background-hover);
+        border-radius: var(--border-radius-large);
+        color: var(--color-main-text);
+    }
 }
 
 /* skeleton */
