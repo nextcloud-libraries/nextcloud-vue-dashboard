@@ -84,13 +84,12 @@ const itemMenu = {
 ```
 
 ### All props
-* showMore: A boolean to show a "show more" text on the widget's bottom
+* showMoreUrl: If this is set, a "show more" text is displayed on the widget's bottom. It's a link pointing to this URL.
 * loading: A boolean to put the widget in a loading state
 * itemMenu: An object containing context menu entries that will be displayed for each items
 * items: An object containing the items themselves (specific structure must be respected except if you override item rendering with the default slot)
 
 ### Events
-* moreClicked: The "show more" text was clicked
 * for each menu item, an event named like its key is emitted with the item as a parameter
 
 ### Slots
@@ -143,8 +142,7 @@ export default {
 ```vue
 <template>
     <DashboardWidget :items="items"
-        :showMore="true"
-        @moreClicked="onMoreClick"
+        :showMoreUrl="'https://nextcloud.com'"
         :itemMenu="itemMenu"
         @hide="onHide"
         @markDone="onMarkDone"
@@ -252,10 +250,9 @@ export default {
             </div>
         </div>
         <slot v-else-if="items.length === 0" name="empty-content" />
-        <a v-else-if="showMore && items.length >= maxItemNumber"
-            @click="$emit('moreClicked')"
-            @keyup.enter="$emit('moreClicked')"
-            class="more" tabindex="0">
+        <a v-else-if="showMoreUrl && items.length >= maxItemNumber"
+            :href="showMoreUrl"
+            target="_blank" class="more" tabindex="0">
             {{ t('core', 'Show more items …') }}
         </a>
     </div>
@@ -272,9 +269,9 @@ export default {
             type: Array,
             default: () => { return [] }
         },
-        showMore: {
-            type: Boolean,
-            default: false
+        showMoreUrl: {
+            type: String,
+            default: ''
         },
         loading: {
             type: Boolean,
@@ -317,7 +314,7 @@ export default {
             return h
         },
         displayedItems() {
-            const nbItems = (this.showMore && this.items.length >= this.maxItemNumber) ?
+            const nbItems = (this.showMoreUrl && this.items.length >= this.maxItemNumber) ?
                 this.maxItemNumber - 1 :
                 this.maxItemNumber
             return this.items.slice(0, nbItems)
