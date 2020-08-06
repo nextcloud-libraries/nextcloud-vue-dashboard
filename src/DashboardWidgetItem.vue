@@ -170,7 +170,7 @@ export default {
 					:url="item.avatarUrl"
 					:user="item.avatarUsername" />
 			</slot>
-			<img v-if="item.overlayIconUrl" class="item-icon" :src="item.overlayIconUrl">
+			<img v-if="item.overlayIconUrl" class="item-icon" :src="item.overlayIconUrl" alt="">
 			<div class="item__details">
 				<h3 :title="item.mainText">
 					{{ item.mainText }}
