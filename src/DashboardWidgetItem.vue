@@ -163,13 +163,15 @@ export default {
             </Popover>
         </div-->
         <a :href="item.targetUrl" target="_blank" :class="{'item-list__entry': true, 'item-list__entry--has-actions-menu': gotMenu}">
-            <Avatar
-                class="item-avatar"
-                :size="44"
-                :url="item.avatarUrl"
-                :user="item.avatarUsername"
-                />
-            <img class="item-icon" :src="item.overlayIconUrl"/>
+             <slot name="avatar" :item="item">
+                <Avatar
+                    class="item-avatar"
+                    :size="44"
+                    :url="item.avatarUrl"
+                    :user="item.avatarUsername"
+                    />
+            </slot>
+            <img v-if="item.overlayIconUrl" class="item-icon" :src="item.overlayIconUrl"/>
             <div class="item__details">
                 <h3 :title="item.mainText">
                     {{ item.mainText }}
