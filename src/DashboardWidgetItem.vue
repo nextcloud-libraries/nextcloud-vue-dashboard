@@ -152,8 +152,8 @@ export default {
 </docs>
 
 <template>
-	<div @mouseover="hovered = true" @mouseleave="hovered = false">
-		<!--div class="popover-container">
+    <div @mouseover="hovered = true" @mouseleave="hovered = false" >
+        <!--div class="popover-container">
             <Popover :open="popoverEnabled && hovered" placement="top" class="content-popover" offset="40">
                 <template>
                     <slot name="popover" :item="item">
@@ -162,81 +162,82 @@ export default {
                 </template>
             </Popover>
         </div-->
-		<a :href="item.targetUrl" target="_blank" :class="{'item-list__entry': true, 'item-list__entry--has-actions-menu': gotMenu}">
-			<Avatar
-				class="item-avatar"
-				:size="44"
-				:url="item.avatarUrl"
-				:user="item.avatarUsername" />
-			<img class="item-icon" :src="item.overlayIconUrl">
-			<div class="item__details">
-				<h3 :title="item.mainText">
-					{{ item.mainText }}
-				</h3>
-				<p class="message" :title="item.subText">
-					{{ item.subText }}
-				</p>
-			</div>
-			<Actions v-if="gotMenu" :force-menu="true" menu-align="right">
-				<ActionButton v-for="(m, id) in itemMenu"
-					:key="id"
-					:title="m.text"
-					:icon="m.icon"
-					:close-after-click="true"
-					@click.prevent.stop="$emit(id, item)" />
-			</Actions>
-		</a>
-	</div>
+        <a :href="item.targetUrl" target="_blank" :class="{'item-list__entry': true, 'item-list__entry--has-actions-menu': gotMenu}">
+            <Avatar
+                class="item-avatar"
+                :size="44"
+                :url="item.avatarUrl"
+                :user="item.avatarUsername"
+                />
+            <img class="item-icon" :src="item.overlayIconUrl"/>
+            <div class="item__details">
+                <h3 :title="item.mainText">
+                    {{ item.mainText }}
+                </h3>
+                <p class="message" :title="item.subText">
+                    {{ item.subText }}
+                </p>
+            </div>
+            <Actions v-if="gotMenu" :forceMenu="true" menuAlign="right">
+                <ActionButton v-for="(m, id) in itemMenu"
+                    :key="id"
+                    :title="m.text"
+                    :icon="m.icon"
+                    :closeAfterClick="true"
+                    @click.prevent.stop="$emit(id, item)"
+                />
+            </Actions>
+        </a>
+    </div>
 </template>
 
 <script>
-import Avatar from '@nextcloud/vue/dist/Components/Avatar'
-import Actions from '@nextcloud/vue/dist/Components/Actions'
-import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
-
+import {
+    //Popover
+    Avatar, Actions, ActionButton } from '@nextcloud/vue'
 export default {
-	name: 'DashboardWidgetItem',
-	components: {
-		// Popover
-		Avatar, Actions, ActionButton
-	},
+    name: 'DashboardWidgetItem',
+    components: {
+        //Popover
+        Avatar, Actions, ActionButton
+    },
 
-	props: {
-		item: {
-			type: Object,
-			required: true
-		},
-		itemMenu: {
-			type: Object,
-			default: () => { return {} }
-		}
-		/* popoverEnabled: {
+    props: {
+        item: {
+            type: Object,
+            required: true,
+        },
+        itemMenu: {
+            type: Object,
+            default: () => { return {} }
+        },
+        /*popoverEnabled: {
             type: Boolean,
             default: false,
-        }, */
-	},
+        },*/
+    },
 
-	data() {
-		return {
-			hovered: false
-		}
-	},
+    mounted() {
+    },
 
-	computed: {
-		gotMenu() {
-			return Object.keys(this.itemMenu).length !== 0
-		}
-	},
+    data() {
+        return {
+            hovered: false
+        }
+    },
 
-	watch: {
-	},
+    watch: {
+    },
 
-	mounted() {
-	},
+    computed: {
+        gotMenu() {
+            return Object.keys(this.itemMenu).length !== 0
+        },
+    },
 
-	methods: {
+    methods: {
 
-	}
+    },
 }
 </script>
 

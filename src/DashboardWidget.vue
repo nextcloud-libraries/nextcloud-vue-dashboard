@@ -98,6 +98,8 @@ const itemMenu = {
 * empty-content (optional): What to display when the item list is empty
 * footer (optional): Something to display
 
+```
+
 ## Simplest example
 ```vue
 <template>
@@ -222,107 +224,105 @@ export default {
 </docs>
 
 <template>
-	<div>
-		<ul>
-			<li v-for="item in displayedItems" :key="item.id">
-				<slot name="default" :item="item">
-					<DashboardWidgetItem
-						:item="item"
-						:item-menu="itemMenu"
-						v-on="handlers">
-						<!-- here we forward the popover slot to the item component >
+    <div>
+        <ul>
+            <li v-for="item in displayedItems" :key="item.id">
+                <slot name="default" :item="item">
+                    <DashboardWidgetItem
+                        :item="item"
+                        :itemMenu="itemMenu"
+                        v-on="handlers">
+                        <!-- here we forward the popover slot to the item component >
                         <template v-slot:popover="{ item }">
                             <slot name="popover" :item="item" />
                         </template-->
-					</DashboardWidgetItem>
-				</slot>
-			</li>
-		</ul>
-		<div v-if="loading">
-			<div v-for="i in 7" :key="i" class="item-list__entry">
-				<Avatar class="item-avatar" :size="44" />
-				<div class="item__details">
-					<h3> &nbsp; </h3>
-					<p class="message">
-&nbsp;
-					</p>
-				</div>
-			</div>
-		</div>
-		<slot v-else-if="items.length === 0" name="empty-content" />
-		<a v-else-if="showMoreUrl && items.length >= maxItemNumber"
-			:href="showMoreUrl"
-			target="_blank" class="more" tabindex="0">
-			{{ t('core', 'Show more items …') }}
-		</a>
-	</div>
+                    </DashboardWidgetItem>
+                </slot>
+            </li>
+        </ul>
+        <div v-if="loading">
+            <div v-for="i in 7" :key="i" class="item-list__entry">
+                <Avatar class="item-avatar" :size="44" />
+                <div class="item__details">
+                    <h3> &nbsp </h3>
+                    <p class="message"> &nbsp </p>
+                </div>
+            </div>
+        </div>
+        <slot v-else-if="items.length === 0" name="empty-content" />
+        <a v-else-if="showMoreUrl && items.length >= maxItemNumber"
+            :href="showMoreUrl"
+            target="_blank" class="more" tabindex="0">
+            {{ t('core', 'Show more items …') }}
+        </a>
+    </div>
 </template>
 
 <script>
 import DashboardWidgetItem from './DashboardWidgetItem'
-import Avatar from '@nextcloud/vue/dist/Components/Avatar'
+import { Avatar } from '@nextcloud/vue/dist/Components/Avatar'
 export default {
-	name: 'DashboardWidget',
-	components: {
-		DashboardWidgetItem, Avatar
-	},
+    name: 'DashboardWidget',
 
-	props: {
-		items: {
-			type: Array,
-			default: () => { return [] }
-		},
-		showMoreUrl: {
-			type: String,
-			default: ''
-		},
-		loading: {
-			type: Boolean,
-			default: false
-		},
-		itemMenu: {
-			type: Object,
-			default: () => { return {} }
-		}
-		/* popoverEnabled: {
+    props: {
+        items: {
+            type: Array,
+            default: () => { return [] }
+        },
+        showMoreUrl: {
+            type: String,
+            default: ''
+        },
+        loading: {
+            type: Boolean,
+            default: false
+        },
+        itemMenu: {
+            type: Object,
+            default: () => { return {} }
+        },
+        /*popoverEnabled: {
             type: Boolean,
             default: false,
-        }, */
-	},
+        },*/
+    },
+    components: {
+        DashboardWidgetItem, Avatar
+    },
 
-	data() {
-		return {
-			maxItemNumber: 7
-		}
-	},
+    created() {
+    },
 
-	computed: {
-		// forward menu events to my parent
-		handlers() {
-			const h = {}
-			for (const evName in this.itemMenu) {
-				h[evName] = (it) => {
-					this.$emit(evName, it)
-				}
-			}
-			return h
-		},
-		displayedItems() {
-			const nbItems = (this.showMoreUrl && this.items.length >= this.maxItemNumber)
-				? this.maxItemNumber - 1
-				: this.maxItemNumber
-			return this.items.slice(0, nbItems)
-		}
-	},
+    data() {
+        return {
+            maxItemNumber: 7
+        }
+    },
 
-	watch: {
-	},
+    watch: {
+    },
 
-	created() {
-	},
+    computed: {
+        // forward menu events to my parent
+        handlers() {
+            const h = {}
+            for (const evName in this.itemMenu) {
+                h[evName] = (it) => {
+                    this.$emit(evName, it)
+                }
+            }
+            return h
+        },
+        displayedItems() {
+            const nbItems = (this.showMoreUrl && this.items.length >= this.maxItemNumber) ?
+                this.maxItemNumber - 1 :
+                this.maxItemNumber
+            return this.items.slice(0, nbItems)
+        },
+    },
 
-	methods: {
-	}
+    methods: {
+    },
 }
 </script>
 

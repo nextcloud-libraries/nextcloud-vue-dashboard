@@ -3,5 +3,5 @@ import DashboardWidgetItem from './DashboardWidgetItem'
 
 export {
 	DashboardWidget,
-	DashboardWidgetItem
+	DashboardWidgetItem,
 }
