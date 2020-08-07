@@ -32,12 +32,12 @@ It displays the item given as a prop with optional:
 The item object passed as a prop must respect this structure:
 ```js static
 const item = {
-    targetUrl: 'https://target.org', // the item element is a link to this URL
-    avatarUrl: 'https://avatar.url/img.png', // used if avatarUsername is not defined
-    avatarUsername: 'Robert', // used if avatarUrl is not defined
-    overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor), // optional, small icon to display on the bottom-right corner of the avatar
-    mainText: 'First item text',
-    subText: 'First item subtext',
+	targetUrl: 'https://target.org', // the item element is a link to this URL
+	avatarUrl: 'https://avatar.url/img.png', // used if avatarUsername is not defined
+	avatarUsername: 'Robert', // used if avatarUrl is not defined
+	overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor), // optional, small icon to display on the bottom-right corner of the avatar
+	mainText: 'First item text',
+	subText: 'First item subtext',
 }
 ```
 
@@ -48,16 +48,16 @@ menu for each items. Each entry of this object must define "text" and "icon" pro
 When clicking the menu item, an event (named like the itemMenu key) will be emitted to the widget's parent.
 ```js static
 const itemMenu = {
-    // triggers an event named "markDone" when clicked
-    'markDone': {
-        text: t('app', 'Mark as done'),
-        icon: 'icon-checkmark',
-    },
-    // triggers an event named "hide" when clicked
-    'hide': {
-        text: t('app', 'Hide'),
-        icon: 'icon-toggle',
-    }
+	// triggers an event named "markDone" when clicked
+	'markDone': {
+		text: t('app', 'Mark as done'),
+		icon: 'icon-checkmark',
+	},
+	// triggers an event named "hide" when clicked
+	'hide': {
+		text: t('app', 'Hide'),
+		icon: 'icon-toggle',
+	}
 }
 ```
 
@@ -71,30 +71,30 @@ const itemMenu = {
 ## Simplest example
 ```vue
 <template>
-    <DashboardWidgetItem :item="item" />
+	<DashboardWidgetItem :item="item" />
 </template>
 
 <script>
 import DashboardWidgetItem from '../components/DashboardWidgetItem'
 const myItem = {
-    targetUrl: 'https://target.org',
-    avatarUrl: 'https://avatar.url/img.png',
-    overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor),
-    mainText: 'I am an item',
-    subText: 'and i can talk',
+	targetUrl: 'https://target.org',
+	avatarUrl: 'https://avatar.url/img.png',
+	overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor),
+	mainText: 'I am an item',
+	subText: 'and i can talk',
 }
 
 export default {
-    name: 'MyRootComponentOrWhatever',
-    props: [],
-    components: {
-        DashboardWidgetItem,
-    },
-    data() {
-        return {
-            item: myItem
-        }
-    },
+	name: 'MyRootComponentOrWhatever',
+	props: [],
+	components: {
+		DashboardWidgetItem,
+	},
+	data() {
+		return {
+			item: myItem
+		}
+	},
 }
 </script>
 ```
@@ -103,48 +103,48 @@ export default {
 
 ```vue
 <template>
-    <DashboardWidgetItem :item="item"
-        :itemMenu="itemMenu"
-        @hide="onHide"
-        @markDone="onMarkDone"
-        />
+	<DashboardWidgetItem :item="item"
+		:itemMenu="itemMenu"
+		@hide="onHide"
+		@markDone="onMarkDone"
+		/>
 </template>
 
 <script>
 import DashboardWidgetItem from '../components/DashboardWidgetItem'
 const myItem = {
-    targetUrl: 'https://target.org',
-    avatarUrl: 'https://avatar.url/img.png',
-    overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor),
-    mainText: 'I am an item',
-    subText: 'and I can talk',
+	targetUrl: 'https://target.org',
+	avatarUrl: 'https://avatar.url/img.png',
+	overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor),
+	mainText: 'I am an item',
+	subText: 'and I can talk',
 }
 
 const myItemMenu = {
-    // triggers an event named "markDone" when clicked
-    'markDone': {
-        text: t('app', 'Mark as done'),
-        icon: 'icon-checkmark',
-    },
-    // triggers an event named "hide" when clicked
-    'hide': {
-        text: t('app', 'Hide'),
-        icon: 'icon-toggle',
-    }
+	// triggers an event named "markDone" when clicked
+	'markDone': {
+		text: t('app', 'Mark as done'),
+		icon: 'icon-checkmark',
+	},
+	// triggers an event named "hide" when clicked
+	'hide': {
+		text: t('app', 'Hide'),
+		icon: 'icon-toggle',
+	}
 }
 
 export default {
-    name: 'MyRootComponentOrWhatever',
-    props: [],
-    components: {
-        DashboardWidgetItem,
-    },
-    data() {
-        return {
-            item: myItem,
-            itemMenu: myItemMenu
-        }
-    },
+	name: 'MyRootComponentOrWhatever',
+	props: [],
+	components: {
+		DashboardWidgetItem,
+	},
+	data() {
+		return {
+			item: myItem,
+			itemMenu: myItemMenu
+		}
+	},
 }
 </script>
 ```
@@ -154,14 +154,14 @@ export default {
 <template>
 	<div @mouseover="hovered = true" @mouseleave="hovered = false">
 		<!--div class="popover-container">
-            <Popover :open="popoverEnabled && hovered" placement="top" class="content-popover" offset="40">
-                <template>
-                    <slot name="popover" :item="item">
-                        {{ t('core', 'Undefined popover content') }}
-                    </slot>
-                </template>
-            </Popover>
-        </div-->
+			<Popover :open="popoverEnabled && hovered" placement="top" class="content-popover" offset="40">
+				<template>
+					<slot name="popover" :item="item">
+						{{ t('core', 'Undefined popover content') }}
+					</slot>
+				</template>
+			</Popover>
+		</div-->
 		<a :href="item.targetUrl" target="_blank" :class="{'item-list__entry': true, 'item-list__entry--has-actions-menu': gotMenu}">
 			<slot name="avatar" :item="item">
 				<Avatar
@@ -170,7 +170,10 @@ export default {
 					:url="item.avatarUrl"
 					:user="item.avatarUsername" />
 			</slot>
-			<img v-if="item.overlayIconUrl" class="item-icon" :src="item.overlayIconUrl" alt="">
+			<img v-if="item.overlayIconUrl"
+				class="item-icon"
+				alt=""
+				:src="item.overlayIconUrl">
 			<div class="item__details">
 				<h3 :title="item.mainText">
 					{{ item.mainText }}
@@ -213,9 +216,9 @@ export default {
 			default: () => { return {} },
 		},
 		/* popoverEnabled: {
-            type: Boolean,
-            default: false,
-        }, */
+			type: Boolean,
+			default: false,
+		}, */
 	},
 
 	data() {
@@ -244,79 +247,79 @@ export default {
 
 <style scoped lang="scss">
 .item-list__entry {
-    display: flex;
-    align-items: flex-start;
-    padding-right: 8px;
-    padding-left: 8px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+	display: flex;
+	align-items: flex-start;
+	padding-right: 8px;
+	padding-left: 8px;
+	padding-top: 8px;
+	padding-bottom: 8px;
 
-    // Account for action menu
-    &--has-actions-menu {
-        padding-right: 0px !important;
-    }
+	// Account for action menu
+	&--has-actions-menu {
+		padding-right: 0px !important;
+	}
 
-    &:hover,
-    &:focus {
-        background-color: var(--color-background-hover);
-        border-radius: var(--border-radius-large);
-    }
-    .item-avatar {
-        position: relative;
-        margin-top: auto;
-        margin-bottom: auto;
-    }
-    .item__details {
-        padding-left: 8px;
-        max-height: 44px;
-        flex-grow: 1;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
+	&:hover,
+	&:focus {
+		background-color: var(--color-background-hover);
+		border-radius: var(--border-radius-large);
+	}
+	.item-avatar {
+		position: relative;
+		margin-top: auto;
+		margin-bottom: auto;
+	}
+	.item__details {
+		padding-left: 8px;
+		max-height: 44px;
+		flex-grow: 1;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
 
-        h3,
-        .message {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .message span {
-            width: 10px;
-            display: inline-block;
-            margin-bottom: -3px;
-        }
-        h3 {
-            font-size: 100%;
-            margin: 0;
-        }
-        .message {
-            width: 100%;
-            color: var(--color-text-maxcontrast);
-        }
-    }
+		h3,
+		.message {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.message span {
+			width: 10px;
+			display: inline-block;
+			margin-bottom: -3px;
+		}
+		h3 {
+			font-size: 100%;
+			margin: 0;
+		}
+		.message {
+			width: 100%;
+			color: var(--color-text-maxcontrast);
+		}
+	}
 
-    .item-icon {
-        position: relative;
-        width: 14px;
-        height: 14px;
-        margin: 27px -3px 0px -7px;
-    }
+	.item-icon {
+		position: relative;
+		width: 14px;
+		height: 14px;
+		margin: 27px -3px 0px -7px;
+	}
 
-    button.primary {
-        padding: 21px;
-        margin: 0;
-    }
+	button.primary {
+		padding: 21px;
+		margin: 0;
+	}
 }
 /*
 .content-popover {
-    height: 0px;
-    width: 0px;
-    margin-left: auto;
-    margin-right: auto;
+	height: 0px;
+	width: 0px;
+	margin-left: auto;
+	margin-right: auto;
 }
 .popover-container {
-    width: 100%;
-    height: 0px;
+	width: 100%;
+	height: 0px;
 }
 */
 </style>
