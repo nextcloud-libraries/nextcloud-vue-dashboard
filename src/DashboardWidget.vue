@@ -257,7 +257,7 @@ export default {
 			target="_blank"
 			class="more"
 			tabindex="0">
-			{{ t('core', 'Show more items …') }}
+			{{ t('core', 'More {what} …', { what: showMoreText }) }}
 		</a>
 	</div>
 </template>
@@ -279,6 +279,10 @@ export default {
 		showMoreUrl: {
 			type: String,
 			default: '',
+		},
+		showMoreText: {
+			type: String,
+			default: t('core', 'items'),
 		},
 		loading: {
 			type: Boolean,
