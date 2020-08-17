@@ -6,9 +6,9 @@
 		"vuejs",
 		"components"
 	],
-	"repository": "https://github.com/nextcloud/vue-dashboardg",
-	"homepage": "https://github.com/nextcloud/vue-dashboardg",
-	"bugs": "https://github.com/nextcloud/vue-dashboardg/issues",
+	"repository": "https://github.com/nextcloud/nextcloud-vue-dashboard",
+	"homepage": "https://github.com/nextcloud/nextcloud-vue-dashboard",
+	"bugs": "https://github.com/nextcloud/nextcloud-vue-dashboard/issues",
 	"author": "Julius Härtl <jus@bitgrid.net>",
 	"license": "AGPL-3.0",
 	"scripts": {
