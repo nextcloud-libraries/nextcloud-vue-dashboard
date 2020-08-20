@@ -196,10 +196,9 @@ export default {
 </template>
 
 <script>
-import {
-	// Popover
-	Avatar, Actions, ActionButton,
-} from '@nextcloud/vue'
+import Avatar from '@nextcloud/vue/dist/Components/Avatar'
+import Actions from '@nextcloud/vue/dist/Components/Actions'
+import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
 export default {
 	name: 'DashboardWidgetItem',
 	components: {

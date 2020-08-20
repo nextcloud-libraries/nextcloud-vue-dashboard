@@ -264,7 +264,7 @@ export default {
 
 <script>
 import DashboardWidgetItem from './DashboardWidgetItem'
-import { Avatar } from '@nextcloud/vue'
+import Avatar from '@nextcloud/vue/dist/Components/Avatar'
 export default {
 	name: 'DashboardWidget',
 	components: {
