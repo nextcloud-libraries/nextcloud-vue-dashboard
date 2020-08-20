@@ -29,7 +29,7 @@ export default {
 		format: 'esm'
 	},
 	plugins: [
-		eslint(),
+		eslint({}),
 		scss(),
 		vue({
 			css: true, // Dynamically inject css as a <style> tag
