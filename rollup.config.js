@@ -17,9 +17,14 @@ export default {
 	external: id => {
 		const externals = [
 			'vue',
-			'@nextcloud/vue'
+			'@nextcloud/vue',
+			'v-tooltip',
+			'popper.js',
 		]
 		if (externals.includes(id)) {
+			return true
+		}
+		if (id.startsWith('@nextcloud/vue/')) {
 			return true
 		}
 		return false
