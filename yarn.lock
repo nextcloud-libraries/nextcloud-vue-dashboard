@@ -1078,9 +1078,18 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@nextcloud/browserslist-config/-/browserslist-config-1.0.0.tgz#e25f492f66ca5870621f10c21ebb7c47ae91c023"
 
-"@nextcloud/dialogs@^1.3.0":
+"@nextcloud/capabilities@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@nextcloud/capabilities/-/capabilities-1.0.2.tgz#e2d1cf27ea2f8ec40610fb14f1d1d30e64f0b638"
+  integrity sha512-HR5vnT2GKTvoQla/WdP+V0/MD1eAGUNWCM0QXVGXQ0TCHb0AORYYMdEQafROsjNSH2kriArFnS/l3YZQrUa9yA==
+  dependencies:
+    "@nextcloud/initial-state" "^1.1.2"
+    core-js "^3.6.4"
+
+"@nextcloud/dialogs@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@nextcloud/dialogs/-/dialogs-1.4.0.tgz#14038a4ca7f7f733c765274bd7c9be3c886ba806"
+  integrity sha512-Rx4x+al/sy+vXu2p3qvEuVeeUDm5JVwa84S21Hxa+pDV3Pd93E2dJGWlZ6h++5fSXbee1sDX9t957B20kYiP3Q==
   dependencies:
     core-js "^3.6.4"
     toastify-js "^1.7.0"
@@ -1103,6 +1112,13 @@
     core-js "^3.6.2"
     semver "^7.3.2"
 
+"@nextcloud/initial-state@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@nextcloud/initial-state/-/initial-state-1.1.2.tgz#6ba3aa2644acd7c5631af5ba6d4737a75e0195e8"
+  integrity sha512-AmewfDmsCgL9j062VWkgWPg+dfyu63xxqv29ErAJ1WZiEQK/gb2IyiILDMTXdVeNHGDY874mzBcAAkpFO/DxnQ==
+  dependencies:
+    core-js "^3.6.4"
+
 "@nextcloud/l10n@^1.2.3":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@nextcloud/l10n/-/l10n-1.3.0.tgz#25d9ebc70a141462846d2120ed53c85eeb3acf32"
@@ -1123,19 +1139,22 @@
     "@types/jquery" "2.0.54"
 
 "@nextcloud/vue@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@nextcloud/vue/-/vue-2.3.0.tgz#59c7938f2b8b95b39ec4da20ef5b6e98091c1831"
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@nextcloud/vue/-/vue-2.6.0.tgz#b3b074a2b94f43bd6d56d1af124f4cd179c0e362"
+  integrity sha512-SzPXwxtbbc4BIUl4BhC7+8kDzgXG+Adr9W7x+hQdr/TuOhunVwcXOKGhyZgWew17oOCsd2c2ltrojhUiCmWjjg==
   dependencies:
     "@nextcloud/auth" "^1.2.3"
     "@nextcloud/axios" "^1.3.2"
-    "@nextcloud/dialogs" "^1.3.0"
+    "@nextcloud/capabilities" "^1.0.2"
+    "@nextcloud/dialogs" "^1.4.0"
     "@nextcloud/event-bus" "^1.1.4"
     "@nextcloud/l10n" "^1.2.3"
     "@nextcloud/router" "^1.0.2"
     core-js "^3.6.5"
     debounce "1.2.0"
-    emoji-mart-vue-fast "^7.0.2"
+    emoji-mart-vue-fast "^7.0.4"
     hammerjs "^2.0.8"
+    linkifyjs "~2.1.9"
     md5 "^2.2.1"
     regenerator-runtime "^0.13.5"
     v-click-outside "^3.0.1"
@@ -1144,7 +1163,7 @@
     vue-color "^2.7.1"
     vue-multiselect "^2.1.6"
     vue-visible "^1.0.2"
-    vue2-datepicker "^3.4.1"
+    vue2-datepicker "^3.6.2"
 
 "@nodelib/fs.scandir@2.1.3":
   version "2.1.3"
@@ -3922,9 +3941,10 @@ emittery@^0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/emittery/-/emittery-0.7.1.tgz#c02375a927a40948c0345cc903072597f5270451"
 
-emoji-mart-vue-fast@^7.0.2:
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/emoji-mart-vue-fast/-/emoji-mart-vue-fast-7.0.3.tgz#5107c021d57adc08ba1ccd1d60f0e8cd8abd283b"
+emoji-mart-vue-fast@^7.0.4:
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/emoji-mart-vue-fast/-/emoji-mart-vue-fast-7.0.4.tgz#886562068d3bf34af5bb9d64a5ab78b9f2a74c1a"
+  integrity sha512-VZuyclCe7ZNPhSvt7WT258MscqRBZTB2Is/7vBilCXgpiZqByaA4AhM1xdIIZZik/aA+5BQiZVmbsDK0jk78Eg==
   dependencies:
     "@babel/polyfill" "7.2.5"
     "@babel/runtime" "7.3.4"
@@ -6423,6 +6443,11 @@ linkify-it@^2.0.0:
   resolved "https://registry.yarnpkg.com/linkify-it/-/linkify-it-2.2.0.tgz#e3b54697e78bf915c70a38acd78fd09e0058b1cf"
   dependencies:
     uc.micro "^1.0.1"
+
+linkifyjs@~2.1.9:
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/linkifyjs/-/linkifyjs-2.1.9.tgz#af06e45a2866ff06c4766582590d098a4d584702"
+  integrity sha512-74ivurkK6WHvHFozVaGtQWV38FzBwSTGNmJolEgFp7QgR2bl6ArUWlvT4GcHKbPe1z3nWYi+VUdDZk16zDOVug==
 
 load-json-file@^1.0.0:
   version "1.1.0"
@@ -10705,9 +10730,10 @@ vue-visible@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/vue-visible/-/vue-visible-1.0.2.tgz#4589036bbf3cfcf4cfbcb209ae8062e9b7cafa91"
 
-vue2-datepicker@^3.4.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/vue2-datepicker/-/vue2-datepicker-3.6.1.tgz#098f6a2a95c3ba7214d87a94f64c53f8d924e3cd"
+vue2-datepicker@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/vue2-datepicker/-/vue2-datepicker-3.6.2.tgz#e68f122e94787042ab1351b98cea91151b8675e8"
+  integrity sha512-J2fCwUmCxIOPUvwQ12e8evFY9cCv6vJmgxRD9fGeUv6JeMMeLwkdpeQZOcqbMf/4mk1cSrY2/9Fr8DaB30LBpA==
   dependencies:
     date-fns "^2.0.1"
     date-format-parse "^0.2.5"
