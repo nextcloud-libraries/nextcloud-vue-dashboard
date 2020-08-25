@@ -43,23 +43,23 @@ If the default slot is not overridden, DashboardWidgetItem component
 is used so an items must look like:
 ```js static
 const itemList = [
-    {
-        id: '1', // string or integer
-        targetUrl: 'https://target.org', // the item element is a link to this URL
-        avatarUrl: 'https://avatar.url/img.png', // used if avatarUsername is not defined
-        avatarUsername: 'Robert', // used if avatarUrl is not defined
-        overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor), // optional, small icon to display on the bottom-right corner of the avatar
-        mainText: 'First item text',
-        subText: 'First item subtext',
-    },
-    {
-        id: '2',
-        targetUrl: 'https://other-target.org',
-        avatarUrl: 'https://other-avatar.url/img.png',
-        overlayIconUrl: generateUrl('/svg/core/actions/add?color=' + this.themingColor),
-        mainText: 'Second item text',
-        subText: 'Second item subtext',
-    },
+	{
+		id: '1', // string or integer
+		targetUrl: 'https://target.org', // the item element is a link to this URL
+		avatarUrl: 'https://avatar.url/img.png', // used if avatarUsername is not defined
+		avatarUsername: 'Robert', // used if avatarUrl is not defined
+		overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor), // optional, small icon to display on the bottom-right corner of the avatar
+		mainText: 'First item text',
+		subText: 'First item subtext',
+	},
+	{
+		id: '2',
+		targetUrl: 'https://other-target.org',
+		avatarUrl: 'https://other-avatar.url/img.png',
+		overlayIconUrl: generateUrl('/svg/core/actions/add?color=' + this.themingColor),
+		mainText: 'Second item text',
+		subText: 'Second item subtext',
+	},
 ]
 ```
 
@@ -70,16 +70,16 @@ menu for each items. Each entry of this object must define "text" and "icon" pro
 When clicking the menu item, an event (named like the itemMenu key) will be emitted to the widget's parent.
 ```js static
 const itemMenu = {
-    // triggers an event named "markDone" when clicked
-    'markDone': {
-        text: t('app', 'Mark as done'),
-        icon: 'icon-checkmark',
-    },
-    // triggers an event named "hide" when clicked
-    'hide': {
-        text: t('app', 'Hide'),
-        icon: 'icon-toggle',
-    }
+	// triggers an event named "markDone" when clicked
+	'markDone': {
+		text: t('app', 'Mark as done'),
+		icon: 'icon-checkmark',
+	},
+	// triggers an event named "hide" when clicked
+	'hide': {
+		text: t('app', 'Hide'),
+		icon: 'icon-toggle',
+	}
 }
 ```
 
@@ -103,37 +103,37 @@ const itemMenu = {
 ## Simplest example
 ```vue
 <template>
-    <DashboardWidget :items="items">
-        <template v-slot:default="{ item }">
-            {{ item.title }}
-        </template>
-    </DashboardWidget>
+	<DashboardWidget :items="items">
+		<template v-slot:default="{ item }">
+			{{ item.title }}
+		</template>
+	</DashboardWidget>
 </template>
 
 <script>
 import DashboardWidget from '../components/DashboardWidget'
 const myItems = [
-    {
-        title: 'first',
-        content: 'blabla',
-    },
-    {
-        title: 'second',
-        content: 'fuzzfuzz',
-    },
+	{
+		title: 'first',
+		content: 'blabla',
+	},
+	{
+		title: 'second',
+		content: 'fuzzfuzz',
+	},
 ]
 
 export default {
-    name: 'MyDashboardWidget',
-    props: [],
-    components: {
-        DashboardWidget,
-    },
-    data() {
-        return {
-            items: myItems
-        }
-    },
+	name: 'MyDashboardWidget',
+	props: [],
+	components: {
+		DashboardWidget,
+	},
+	data() {
+		return {
+			items: myItems
+		}
+	},
 }
 </script>
 ```
@@ -141,83 +141,83 @@ export default {
 ## Complete example
 ```vue
 <template>
-    <DashboardWidget :items="items"
-        :showMoreUrl="'https://nextcloud.com'"
-        :itemMenu="itemMenu"
-        @hide="onHide"
-        @markDone="onMarkDone"
-        :loading="state === 'loading'"
-        >
+	<DashboardWidget :items="items"
+		:showMoreUrl="'https://nextcloud.com'"
+		:itemMenu="itemMenu"
+		@hide="onHide"
+		@markDone="onMarkDone"
+		:loading="state === 'loading'"
+		>
 
-        <template v-slot:empty-content>
-            Nothing to display
-        </template>
-    </DashboardWidget>
+		<template v-slot:empty-content>
+			Nothing to display
+		</template>
+	</DashboardWidget>
 </template>
 
 <script>
 import DashboardWidget from '../components/DashboardWidget'
 const myItems = [
-    {
-        id: '1',
-        targetUrl: 'https://target.org',
-        avatarUrl: 'https://avatar.url/img.png',
-        avatarUsername: 'Robert',
-        overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor),
-        mainText: 'First item text',
-        subText: 'First item subtext',
-    },
-    {
-        id: '2',
-        targetUrl: 'https://other-target.org',
-        avatarUrl: 'https://other-avatar.url/img.png',
-        overlayIconUrl: generateUrl('/svg/core/actions/add?color=' + this.themingColor),
-        mainText: 'Second item text',
-        subText: 'Second item subtext',
-    },
+	{
+		id: '1',
+		targetUrl: 'https://target.org',
+		avatarUrl: 'https://avatar.url/img.png',
+		avatarUsername: 'Robert',
+		overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor),
+		mainText: 'First item text',
+		subText: 'First item subtext',
+	},
+	{
+		id: '2',
+		targetUrl: 'https://other-target.org',
+		avatarUrl: 'https://other-avatar.url/img.png',
+		overlayIconUrl: generateUrl('/svg/core/actions/add?color=' + this.themingColor),
+		mainText: 'Second item text',
+		subText: 'Second item subtext',
+	},
 ]
 
 const myItemMenu = {
-    // triggers an event named "markDone" when clicked
-    'markDone': {
-        text: t('app', 'Mark as done'),
-        icon: 'icon-checkmark',
-    },
-    // triggers an event named "hide" when clicked
-    'hide': {
-        text: t('app', 'Hide'),
-        icon: 'icon-toggle',
-    }
+	// triggers an event named "markDone" when clicked
+	'markDone': {
+		text: t('app', 'Mark as done'),
+		icon: 'icon-checkmark',
+	},
+	// triggers an event named "hide" when clicked
+	'hide': {
+		text: t('app', 'Hide'),
+		icon: 'icon-toggle',
+	}
 }
 
 export default {
-    name: 'MyDashboardWidget',
-    props: [],
-    components: {
-        DashboardWidget,
-    },
-    data() {
-        return {
-            items: myItems,
-            itemMenu: myItemMenu,
-            loading: true,
-        }
-    },
-    methods: {
-        onMoreClick() {
-            console.log('more clicked')
-            const win = window.open('https://wherever.you.want', '_blank')
-            win.focus()
-        },
-        onHide(item) {
-            console.log('user wants to hide item ' + item.id)
-            // do what you want
-        },
-        onMarkDone(item) {
-            console.log('user wants to mark item ' + item.id + ' as done')
-            // do what you want
-        },
-    },
+	name: 'MyDashboardWidget',
+	props: [],
+	components: {
+		DashboardWidget,
+	},
+	data() {
+		return {
+			items: myItems,
+			itemMenu: myItemMenu,
+			loading: true,
+		}
+	},
+	methods: {
+		onMoreClick() {
+			console.log('more clicked')
+			const win = window.open('https://wherever.you.want', '_blank')
+			win.focus()
+		},
+		onHide(item) {
+			console.log('user wants to hide item ' + item.id)
+			// do what you want
+		},
+		onMarkDone(item) {
+			console.log('user wants to mark item ' + item.id + ' as done')
+			// do what you want
+		},
+	},
 }
 </script>
 ```
@@ -233,9 +233,9 @@ export default {
 						:item-menu="itemMenu"
 						v-on="handlers">
 						<!-- here we forward the popover slot to the item component >
-                        <template v-slot:popover="{ item }">
-                            <slot name="popover" :item="item" />
-                        </template-->
+						<template v-slot:popover="{ item }">
+							<slot name="popover" :item="item" />
+						</template-->
 					</DashboardWidgetItem>
 				</slot>
 			</li>
@@ -293,9 +293,9 @@ export default {
 			default: () => { return {} },
 		},
 		/* popoverEnabled: {
-            type: Boolean,
-            default: false,
-        }, */
+			type: Boolean,
+			default: false,
+		}, */
 	},
 
 	data() {
@@ -336,57 +336,57 @@ export default {
 
 <style scoped lang="scss">
 .more {
-    display: block;
-    text-align: center;
-    color: var(--color-text-maxcontrast);
-    line-height: 60px;
-    cursor: pointer;
+	display: block;
+	text-align: center;
+	color: var(--color-text-maxcontrast);
+	line-height: 60px;
+	cursor: pointer;
 
-    &:hover,
-    &:focus {
-        background-color: var(--color-background-hover);
-        border-radius: var(--border-radius-large);
-        color: var(--color-main-text);
-    }
+	&:hover,
+	&:focus {
+		background-color: var(--color-background-hover);
+		border-radius: var(--border-radius-large);
+		color: var(--color-main-text);
+	}
 }
 
 /* skeleton */
 .item-list__entry {
-    display: flex;
-    align-items: flex-start;
-    padding-right: 8px;
-    padding-left: 8px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+	display: flex;
+	align-items: flex-start;
+	padding-right: 8px;
+	padding-left: 8px;
+	padding-top: 8px;
+	padding-bottom: 8px;
 
-    .item-avatar {
-        position: relative;
-        margin-top: auto;
-        margin-bottom: auto;
-        background-color: var(--color-background-dark) !important;
-    }
-    .item__details {
-        padding-left: 8px;
-        max-height: 44px;
-        flex-grow: 1;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
+	.item-avatar {
+		position: relative;
+		margin-top: auto;
+		margin-bottom: auto;
+		background-color: var(--color-background-dark) !important;
+	}
+	.item__details {
+		padding-left: 8px;
+		max-height: 44px;
+		flex-grow: 1;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
 
-        h3,
-        .message {
-            white-space: nowrap;
-            background-color: var(--color-background-dark);
-        }
-        h3 {
-            font-size: 100%;
-            margin: 0;
-        }
-        .message {
-            width: 80%;
-            height: 15px;
-            margin-top: 5px;
-        }
-    }
+		h3,
+		.message {
+			white-space: nowrap;
+			background-color: var(--color-background-dark);
+		}
+		h3 {
+			font-size: 100%;
+			margin: 0;
+		}
+		.message {
+			width: 80%;
+			height: 15px;
+			margin-top: 5px;
+		}
+	}
 }
 </style>
