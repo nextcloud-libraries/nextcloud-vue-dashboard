@@ -162,7 +162,10 @@ export default {
 				</template>
 			</Popover>
 		</div-->
-		<a :href="item.targetUrl" target="_blank" :class="{'item-list__entry': true, 'item-list__entry--has-actions-menu': gotMenu}">
+		<a :href="item.targetUrl"
+			target="_blank"
+			:class="{ 'item-list__entry': true, 'item-list__entry--has-actions-menu': gotMenu }"
+			@click="onLinkClick">
 			<slot name="avatar" :item="item">
 				<Avatar
 					class="item-avatar"
@@ -240,7 +243,11 @@ export default {
 	},
 
 	methods: {
-
+		onLinkClick(event) {
+			if (event.target.tagName === 'BUTTON') {
+				event.preventDefault()
+			}
+		},
 	},
 }
 </script>
