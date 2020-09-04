@@ -1135,9 +1135,9 @@
     "@types/jquery" "2.0.54"
 
 "@nextcloud/vue@^2.3.0":
-  version "2.6.3"
-  resolved "https://registry.yarnpkg.com/@nextcloud/vue/-/vue-2.6.3.tgz#5cd4a3aa6a7ada065f87e5575a13a6902aa86886"
-  integrity sha512-TIun4GxMtWU2rnN8Zzum63z66IIFXae5FKDvwrM6arQMZEOzCJ14oxoU2W22N0CBiLcDCmkKmN91a/2QSb3Inw==
+  version "2.6.4"
+  resolved "https://registry.yarnpkg.com/@nextcloud/vue/-/vue-2.6.4.tgz#f88bf006abaa984507d41dca6707618b21c290dc"
+  integrity sha512-M5s2mD40KxYFHERZ+n9Yk3GkDXaKcXXxqOtlcgNNcPltcT7IvPKpm8+a0MaiYlQKBhDLkwRyRH+RHxcJKZjbIg==
   dependencies:
     "@nextcloud/auth" "^1.2.3"
     "@nextcloud/axios" "^1.3.2"
