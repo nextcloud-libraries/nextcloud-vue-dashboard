@@ -225,6 +225,14 @@ export default {
 
 <template>
 	<div>
+		<EmptyContent
+			v-if="showItemsAndEmptyContent && halfEmptyContentString && items.length !== 0"
+			class="half-screen"
+			:icon="halfEmptyContentIcon">
+			<template #desc>
+				{{ halfEmptyContentString }}
+			</template>
+		</EmptyContent>
 		<ul>
 			<li v-for="item in displayedItems" :key="item.id">
 				<slot name="default" :item="item">
@@ -251,7 +259,13 @@ export default {
 				</div>
 			</div>
 		</div>
-		<slot v-else-if="items.length === 0" name="empty-content" />
+		<slot v-else-if="items.length === 0" name="empty-content">
+			<EmptyContent
+				v-if="emptyContentMessage"
+				:icon="emptyContentIcon">
+				{{ emptyContentMessage }}
+			</EmptyContent>
+		</slot>
 		<a v-else-if="showMoreUrl && items.length >= maxItemNumber"
 			:href="showMoreUrl"
 			target="_blank"
@@ -265,10 +279,14 @@ export default {
 <script>
 import DashboardWidgetItem from './DashboardWidgetItem'
 import Avatar from '@nextcloud/vue/dist/Components/Avatar'
+import EmptyContent from '@nextcloud/vue/dist/Components/EmptyContent'
+
 export default {
 	name: 'DashboardWidget',
 	components: {
-		DashboardWidgetItem, Avatar,
+		Avatar,
+		DashboardWidgetItem,
+		EmptyContent,
 	},
 
 	props: {
@@ -296,6 +314,27 @@ export default {
 			type: Boolean,
 			default: false,
 		}, */
+
+		showItemsAndEmptyContent: {
+			type: Boolean,
+			default: false,
+		},
+		emptyContentIcon: {
+			type: String,
+			default: '',
+		},
+		emptyContentMessage: {
+			type: String,
+			default: '',
+		},
+		halfEmptyContentIcon: {
+			type: String,
+			default: 'icon-checkmark',
+		},
+		halfEmptyContentMessage: {
+			type: String,
+			default: '',
+		},
 	},
 
 	data() {
@@ -321,20 +360,25 @@ export default {
 				: this.maxItemNumber
 			return this.items.slice(0, nbItems)
 		},
-	},
 
-	watch: {
-	},
-
-	created() {
-	},
-
-	methods: {
+		halfEmptyContentString() {
+			return this.halfEmptyContentMessage || this.emptyContentMessage
+		},
 	},
 }
 </script>
 
 <style scoped lang="scss">
+.empty-content {
+	text-align: center;
+	margin-top: 5vh;
+
+	&.half-screen {
+		margin-top: 0;
+		margin-bottom: 2vh;
+	}
+}
+
 .more {
 	display: block;
 	text-align: center;
@@ -354,10 +398,7 @@ export default {
 .item-list__entry {
 	display: flex;
 	align-items: flex-start;
-	padding-right: 8px;
-	padding-left: 8px;
-	padding-top: 8px;
-	padding-bottom: 8px;
+	padding: 8px;
 
 	.item-avatar {
 		position: relative;
