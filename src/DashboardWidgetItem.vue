@@ -171,7 +171,8 @@ export default {
 					class="item-avatar"
 					:size="44"
 					:url="item.avatarUrl"
-					:user="item.avatarUsername" />
+					:user="item.avatarUsername"
+					:show-user-status="!gotOverlayIcon" />
 			</slot>
 			<img v-if="item.overlayIconUrl"
 				class="item-icon"
@@ -233,6 +234,9 @@ export default {
 	computed: {
 		gotMenu() {
 			return Object.keys(this.itemMenu).length !== 0
+		},
+		gotOverlayIcon() {
+			return this.item.overlayIconUrl && this.item.overlayIconUrl !== ''
 		},
 	},
 
