@@ -29,7 +29,7 @@ It has an optional context menu.
 
 ### All props
 * itemMenu: An object containing context menu entries that will be displayed for each items
-* targetUrl: Yhe item element is a link to this URL
+* targetUrl: The item element is a link to this URL.
 * avatarUrl: Where to get the avatar image. Used if avatarUsername is not defined.
 * avatarUsername: Name to provide to the Avatar. Used if avatarUrl is not defined.
 * overlayIconUrl: Small icon to display on the bottom-right corner of the avatar. Optional.
@@ -203,35 +203,55 @@ import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
 export default {
 	name: 'DashboardWidgetItem',
 	components: {
-		// Popover
 		Avatar, Actions, ActionButton,
 	},
 
 	props: {
+		/**
+		 * The item element is a link to this URL (optional)
+		 */
 		targetUrl: {
 			type: String,
-			default: '',
+			default: undefined,
 		},
+		/**
+		 * Where to get the avatar image. (optional) Used if avatarUsername is not defined.
+		 */
 		avatarUrl: {
 			type: String,
-			default: '',
+			default: undefined,
 		},
+		/**
+		 * Name to provide to the Avatar. (optional) Used if avatarUrl is not defined.
+		 */
 		avatarUsername: {
 			type: String,
-			default: '',
+			default: undefined,
 		},
+		/**
+		 * Small icon to display on the bottom-right corner of the avatar (optional)
+		 */
 		overlayIconUrl: {
 			type: String,
-			default: '',
+			default: undefined,
 		},
+		/**
+		 * Item main text (mandatory)
+		 */
 		mainText: {
 			type: String,
 			required: true,
 		},
+		/**
+		 * Item subline text (optional)
+		 */
 		subText: {
 			type: String,
 			default: '',
 		},
+		/**
+		 * An object containing context menu entries that will be displayed for each items (optional)
+		 */
 		itemMenu: {
 			type: Object,
 			default: () => { return {} },
