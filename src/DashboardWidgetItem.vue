@@ -27,7 +27,6 @@ It has an optional context menu.
 
 ## Usage
 
-
 ### All props
 * itemMenu: An object containing context menu entries that will be displayed for each items
 * targetUrl: Yhe item element is a link to this URL
@@ -248,12 +247,12 @@ export default {
 	computed: {
 		item() {
 			return {
-				targetUrl,
-				avatarUrl,
-				avatarUsername,
-				overlayIconUrl,
-				mainText,
-				subText,
+				targetUrl: this.targetUrl,
+				avatarUrl: this.avatarUrl,
+				avatarUsername: this.avatarUsername,
+				overlayIconUrl: this.overlayIconUrl,
+				mainText: this.mainText,
+				subText: this.subText,
 			}
 		},
 		gotMenu() {
