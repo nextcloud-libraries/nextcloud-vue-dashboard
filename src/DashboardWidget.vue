@@ -266,7 +266,7 @@ export default {
 				{{ emptyContentMessage }}
 			</EmptyContent>
 		</slot>
-		<a v-else-if="showMoreUrl && items.length >= maxItemNumber"
+		<a v-else-if="showMore"
 			:href="showMoreUrl"
 			target="_blank"
 			class="more"
@@ -337,12 +337,6 @@ export default {
 		},
 	},
 
-	data() {
-		return {
-			maxItemNumber: 7,
-		}
-	},
-
 	computed: {
 		// forward menu events to my parent
 		handlers() {
@@ -364,6 +358,14 @@ export default {
 		halfEmptyContentString() {
 			return this.halfEmptyContentMessage || this.emptyContentMessage
 		},
+
+		maxItemNumber() {
+			return this.showItemsAndEmptyContent ? 5 : 7
+		},
+
+		showMore() {
+			return this.showMoreUrl && this.items.length >= this.maxItemNumber
+		},
 	},
 }
 </script>
@@ -375,7 +377,7 @@ export default {
 
 	&.half-screen {
 		margin-top: 0;
-		margin-bottom: 2vh;
+		margin-bottom: 1vh;
 	}
 }
 
