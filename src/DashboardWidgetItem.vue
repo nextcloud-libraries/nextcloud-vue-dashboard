@@ -159,8 +159,9 @@ export default {
 
 <template>
 	<div @mouseover="hovered = true" @mouseleave="hovered = false">
-		<a :href="targetUrl"
-			target="_blank"
+		<component :is="targetUrl ? 'a' : 'div'"
+			:href="targetUrl"
+			:target="targetUrl ? '_blank' : undefined"
 			:class="{ 'item-list__entry': true, 'item-list__entry--has-actions-menu': gotMenu }"
 			@click="onLinkClick">
 			<slot name="avatar" :avatarUrl="avatarUrl" :avatarUsername="avatarUsername">
@@ -192,7 +193,7 @@ export default {
 					{{ m.text }}
 				</ActionButton>
 			</Actions>
-		</a>
+		</component>
 	</div>
 </template>
 
