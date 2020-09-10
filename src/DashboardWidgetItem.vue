@@ -23,23 +23,18 @@
 This component displays a dashboard widget item. It is used by default by the DashboardWidget component.
 You can also use it wherever you want.
 
-It displays the item given as a prop with optional:
-* context menu
+It has an optional context menu.
 
 ## Usage
 
-### Item
-The item object passed as a prop must respect this structure:
-```js static
-const item = {
-	targetUrl: 'https://target.org', // the item element is a link to this URL
-	avatarUrl: 'https://avatar.url/img.png', // used if avatarUsername is not defined
-	avatarUsername: 'Robert', // used if avatarUrl is not defined
-	overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor), // optional, small icon to display on the bottom-right corner of the avatar
-	mainText: 'First item text',
-	subText: 'First item subtext',
-}
-```
+### All props
+* itemMenu: An object containing context menu entries that will be displayed for each items
+* targetUrl: The item element is a link to this URL.
+* avatarUrl: Where to get the avatar image. Used if avatarUsername is not defined.
+* avatarUsername: Name to provide to the Avatar. Used if avatarUrl is not defined.
+* overlayIconUrl: Small icon to display on the bottom-right corner of the avatar. Optional.
+* mainText
+* subText
 
 ### Context menu
 You can optionally pass an object in the "itemMenu" prop to define a context
@@ -61,28 +56,28 @@ const itemMenu = {
 }
 ```
 
-### All props
-* itemMenu: An object containing context menu entries that will be displayed for each items
-* item: An object containing the item itself (specific structure must be respected)
-
 ### Events
 * for each menu item, an event named like its key is emitted with the item as a parameter
 
 ## Simplest example
 ```vue
 <template>
-	<DashboardWidgetItem :item="item" />
+	<DashboardWidgetItem
+		:targetUrl="targetUrl"
+		:avatarUrl="avatarUrl"
+		:overlayIconUrl="overlayIconUrl"
+		:mainText="mainText"
+		:subText="subText" />
 </template>
 
 <script>
-import DashboardWidgetItem from '../components/DashboardWidgetItem'
-const myItem = {
-	targetUrl: 'https://target.org',
-	avatarUrl: 'https://avatar.url/img.png',
-	overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor),
-	mainText: 'I am an item',
-	subText: 'and i can talk',
-}
+import { DashboardWidgetItem } from '@nextcloud/vue-dashboard'
+
+const targetUrl = 'https://target.org'
+const avatarUrl = 'https://avatar.url/img.png'
+const overlayIconUrl = generateUrl('/svg/core/actions/sound?color=' + this.themingColor)
+const mainText = 'I am an item'
+const subText = 'and i can talk'
 
 export default {
 	name: 'MyRootComponentOrWhatever',
@@ -92,7 +87,11 @@ export default {
 	},
 	data() {
 		return {
-			item: myItem
+			targetUrl,
+			avatarUrl,
+			overlayIconUrl,
+			mainText,
+			subText,
 		}
 	},
 }
@@ -103,22 +102,25 @@ export default {
 
 ```vue
 <template>
-	<DashboardWidgetItem :item="item"
+	<DashboardWidgetItem
+		:targetUrl="targetUrl"
+		:avatarUrl="avatarUrl"
+		:overlayIconUrl="overlayIconUrl"
+		:mainText="mainText"
+		:subText="subText"
 		:itemMenu="itemMenu"
 		@hide="onHide"
-		@markDone="onMarkDone"
-		/>
+		@markDone="onMarkDone" />
 </template>
 
 <script>
-import DashboardWidgetItem from '../components/DashboardWidgetItem'
-const myItem = {
-	targetUrl: 'https://target.org',
-	avatarUrl: 'https://avatar.url/img.png',
-	overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor),
-	mainText: 'I am an item',
-	subText: 'and I can talk',
-}
+import { DashboardWidgetItem } from '@nextcloud/vue-dashboard'
+
+const targetUrl = 'https://target.org'
+const avatarUrl = 'https://avatar.url/img.png'
+const overlayIconUrl = generateUrl('/svg/core/actions/sound?color=' + this.themingColor)
+const mainText = 'I am an item'
+const subText = 'and i can talk'
 
 const myItemMenu = {
 	// triggers an event named "markDone" when clicked
@@ -141,8 +143,12 @@ export default {
 	},
 	data() {
 		return {
-			item: myItem,
-			itemMenu: myItemMenu
+			targetUrl,
+			avatarUrl,
+			overlayIconUrl,
+			mainText,
+			subText,
+			itemMenu: myItemMenu,
 		}
 	},
 }
@@ -153,37 +159,29 @@ export default {
 
 <template>
 	<div @mouseover="hovered = true" @mouseleave="hovered = false">
-		<!--div class="popover-container">
-			<Popover :open="popoverEnabled && hovered" placement="top" class="content-popover" offset="40">
-				<template>
-					<slot name="popover" :item="item">
-						{{ t('core', 'Undefined popover content') }}
-					</slot>
-				</template>
-			</Popover>
-		</div-->
-		<a :href="item.targetUrl"
-			target="_blank"
+		<component :is="targetUrl ? 'a' : 'div'"
+			:href="targetUrl"
+			:target="targetUrl ? '_blank' : undefined"
 			:class="{ 'item-list__entry': true, 'item-list__entry--has-actions-menu': gotMenu }"
 			@click="onLinkClick">
-			<slot name="avatar" :item="item">
+			<slot name="avatar" :avatarUrl="avatarUrl" :avatarUsername="avatarUsername">
 				<Avatar
 					class="item-avatar"
 					:size="44"
-					:url="item.avatarUrl"
-					:user="item.avatarUsername"
+					:url="avatarUrl"
+					:user="avatarUsername"
 					:show-user-status="!gotOverlayIcon" />
 			</slot>
-			<img v-if="item.overlayIconUrl"
+			<img v-if="overlayIconUrl"
 				class="item-icon"
 				alt=""
-				:src="item.overlayIconUrl">
+				:src="overlayIconUrl">
 			<div class="item__details">
-				<h3 :title="item.mainText">
-					{{ item.mainText }}
+				<h3 :title="mainText">
+					{{ mainText }}
 				</h3>
-				<p class="message" :title="item.subText">
-					{{ item.subText }}
+				<p class="message" :title="subText">
+					{{ subText }}
 				</p>
 			</div>
 			<Actions v-if="gotMenu" :force-menu="true" menu-align="right">
@@ -195,7 +193,7 @@ export default {
 					{{ m.text }}
 				</ActionButton>
 			</Actions>
-		</a>
+		</component>
 	</div>
 </template>
 
@@ -206,23 +204,59 @@ import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
 export default {
 	name: 'DashboardWidgetItem',
 	components: {
-		// Popover
 		Avatar, Actions, ActionButton,
 	},
 
 	props: {
-		item: {
-			type: Object,
+		/**
+		 * The item element is a link to this URL (optional)
+		 */
+		targetUrl: {
+			type: String,
+			default: undefined,
+		},
+		/**
+		 * Where to get the avatar image. (optional) Used if avatarUsername is not defined.
+		 */
+		avatarUrl: {
+			type: String,
+			default: undefined,
+		},
+		/**
+		 * Name to provide to the Avatar. (optional) Used if avatarUrl is not defined.
+		 */
+		avatarUsername: {
+			type: String,
+			default: undefined,
+		},
+		/**
+		 * Small icon to display on the bottom-right corner of the avatar (optional)
+		 */
+		overlayIconUrl: {
+			type: String,
+			default: undefined,
+		},
+		/**
+		 * Item main text (mandatory)
+		 */
+		mainText: {
+			type: String,
 			required: true,
 		},
+		/**
+		 * Item subline text (optional)
+		 */
+		subText: {
+			type: String,
+			default: '',
+		},
+		/**
+		 * An object containing context menu entries that will be displayed for each items (optional)
+		 */
 		itemMenu: {
 			type: Object,
 			default: () => { return {} },
 		},
-		/* popoverEnabled: {
-			type: Boolean,
-			default: false,
-		}, */
 	},
 
 	data() {
@@ -232,11 +266,21 @@ export default {
 	},
 
 	computed: {
+		item() {
+			return {
+				targetUrl: this.targetUrl,
+				avatarUrl: this.avatarUrl,
+				avatarUsername: this.avatarUsername,
+				overlayIconUrl: this.overlayIconUrl,
+				mainText: this.mainText,
+				subText: this.subText,
+			}
+		},
 		gotMenu() {
 			return Object.keys(this.itemMenu).length !== 0
 		},
 		gotOverlayIcon() {
-			return this.item.overlayIconUrl && this.item.overlayIconUrl !== ''
+			return this.overlayIconUrl && this.overlayIconUrl !== ''
 		},
 	},
 

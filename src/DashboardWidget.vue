@@ -100,7 +100,7 @@ const itemMenu = {
 
 ```
 
-## Simplest example
+## Simplest example with custom item
 ```vue
 <template>
 	<DashboardWidget :items="items">
@@ -111,7 +111,7 @@ const itemMenu = {
 </template>
 
 <script>
-import DashboardWidget from '../components/DashboardWidget'
+import { DashboardWidget } from '@nextcloud/vue-dashboard'
 const myItems = [
 	{
 		title: 'first',
@@ -138,7 +138,7 @@ export default {
 </script>
 ```
 
-## Complete example
+## Complete example using DashboardWidgetItem
 ```vue
 <template>
 	<DashboardWidget :items="items"
@@ -146,8 +146,7 @@ export default {
 		:itemMenu="itemMenu"
 		@hide="onHide"
 		@markDone="onMarkDone"
-		:loading="state === 'loading'"
-		>
+		:loading="state === 'loading'">
 
 		<template v-slot:empty-content>
 			Nothing to display
@@ -156,7 +155,7 @@ export default {
 </template>
 
 <script>
-import DashboardWidget from '../components/DashboardWidget'
+import { DashboardWidget } from '@nextcloud/vue-dashboard'
 const myItems = [
 	{
 		id: '1',
@@ -237,14 +236,14 @@ export default {
 			<li v-for="item in displayedItems" :key="item.id">
 				<slot name="default" :item="item">
 					<DashboardWidgetItem
-						:item="item"
+						:target-url="item.targetUrl"
+						:avatar-url="item.avatarUrl"
+						:avatar-username="item.avatarUsername"
+						:overlay-icon-url="item.overlayIconUrl"
+						:main-text="item.mainText"
+						:sub-text="item.subText"
 						:item-menu="itemMenu"
-						v-on="handlers">
-						<!-- here we forward the popover slot to the item component >
-						<template v-slot:popover="{ item }">
-							<slot name="popover" :item="item" />
-						</template-->
-					</DashboardWidgetItem>
+						v-on="handlers" />
 				</slot>
 			</li>
 		</ul>
@@ -310,11 +309,6 @@ export default {
 			type: Object,
 			default: () => { return {} },
 		},
-		/* popoverEnabled: {
-			type: Boolean,
-			default: false,
-		}, */
-
 		showItemsAndEmptyContent: {
 			type: Boolean,
 			default: false,
