@@ -260,14 +260,12 @@ export default {
 .item-list__entry {
 	display: flex;
 	align-items: flex-start;
-	padding-right: 8px;
-	padding-left: 8px;
-	padding-top: 8px;
-	padding-bottom: 8px;
+	position: relative;
+	padding: 8px;
 
 	// Account for action menu
 	&--has-actions-menu {
-		padding-right: 0px !important;
+		padding-right: 0 !important;
 	}
 
 	&:hover,
