@@ -262,7 +262,9 @@ export default {
 			<EmptyContent
 				v-if="emptyContentMessage"
 				:icon="emptyContentIcon">
-				{{ emptyContentMessage }}
+				<template #desc>
+					{{ emptyContentMessage }}
+				</template>
 			</EmptyContent>
 		</slot>
 		<a v-else-if="showMore"
