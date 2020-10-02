@@ -28,6 +28,7 @@ It has an optional context menu.
 ## Usage
 
 ### All props
+* id: A unique string/integer identifying the item (optional).
 * itemMenu: An object containing context menu entries that will be displayed for each items
 * targetUrl: The item element is a link to this URL.
 * avatarUrl: Where to get the avatar image. Used if avatarUsername is not defined.
@@ -103,6 +104,7 @@ export default {
 ```vue
 <template>
 	<DashboardWidgetItem
+		:id="myItemId"
 		:targetUrl="targetUrl"
 		:avatarUrl="avatarUrl"
 		:overlayIconUrl="overlayIconUrl"
@@ -116,6 +118,7 @@ export default {
 <script>
 import { DashboardWidgetItem } from '@nextcloud/vue-dashboard'
 
+const myItemId = '123abc'
 const targetUrl = 'https://target.org'
 const avatarUrl = 'https://avatar.url/img.png'
 const overlayIconUrl = generateUrl('/svg/core/actions/sound?color=' + this.themingColor)
@@ -143,6 +146,7 @@ export default {
 	},
 	data() {
 		return {
+			myItemId,
 			targetUrl,
 			avatarUrl,
 			overlayIconUrl,
@@ -209,6 +213,13 @@ export default {
 
 	props: {
 		/**
+		 * The item id (optional)
+		 */
+		id: {
+			type: [String, Number],
+			default: undefined,
+		},
+		/**
 		 * The item element is a link to this URL (optional)
 		 */
 		targetUrl: {
@@ -268,6 +279,7 @@ export default {
 	computed: {
 		item() {
 			return {
+				id: this.id,
 				targetUrl: this.targetUrl,
 				avatarUrl: this.avatarUrl,
 				avatarUsername: this.avatarUsername,
