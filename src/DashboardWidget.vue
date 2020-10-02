@@ -98,8 +98,6 @@ const itemMenu = {
 * empty-content (optional): What to display when the item list is empty
 * footer (optional): Something to display
 
-```
-
 ## Simplest example with custom item
 ```vue
 <template>
