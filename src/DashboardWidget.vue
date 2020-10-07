@@ -234,6 +234,7 @@ export default {
 			<li v-for="item in displayedItems" :key="item.id">
 				<slot name="default" :item="item">
 					<DashboardWidgetItem
+						:id="item.id"
 						:target-url="item.targetUrl"
 						:avatar-url="item.avatarUrl"
 						:avatar-username="item.avatarUsername"
