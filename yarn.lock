@@ -1126,6 +1126,13 @@
     axios "^0.19.2"
     core-js "^3.6.4"
 
+"@nextcloud/browser-storage@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@nextcloud/browser-storage/-/browser-storage-0.1.1.tgz#6988dc364185c482295b6561b2d67cdc943b1c03"
+  integrity sha512-bWzs/A44rEK8b3CMOFw0ZhsenagrWdsB902LOEwmlMCcFysiFgWiOPbF4/0/ODlOYjvPrO02wf6RigWtb8P+gA==
+  dependencies:
+    core-js "3.6.1"
+
 "@nextcloud/browserslist-config@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@nextcloud/browserslist-config/-/browserslist-config-1.0.0.tgz#e25f492f66ca5870621f10c21ebb7c47ae91c023"
@@ -1138,13 +1145,13 @@
     "@nextcloud/initial-state" "^1.1.2"
     core-js "^3.6.4"
 
-"@nextcloud/dialogs@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@nextcloud/dialogs/-/dialogs-2.0.1.tgz#8cae89d24b7769ff3e317003b3587c4b6a20650d"
-  integrity sha512-Bme8vcs8n4XT5spBgkDEv1z9zNOE23AIbr5jF1WJ1A2XNMNj5Zvy29RosIh0k7H+1lN0PlU38u+eMV1Ets3E4A==
+"@nextcloud/dialogs@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@nextcloud/dialogs/-/dialogs-3.0.0.tgz#791d87052507753c518b3aadaac0e8217e8b01da"
+  integrity sha512-5FVP0RSxIpKTKdSUlQ4osDDz/oCx2/4+InliB5MX2EcrjDe6q3fZMabSGnFTnIAu0CXRTzBk7RpneaIFGv+d5A==
   dependencies:
     "@nextcloud/l10n" "^1.3.0"
-    "@nextcloud/typings" "^0.2.2"
+    "@nextcloud/typings" "^1.0.0"
     core-js "^3.6.4"
     toastify-js "^1.9.1"
 
@@ -1194,25 +1201,37 @@
   dependencies:
     "@types/jquery" "2.0.54"
 
-"@nextcloud/vue@^2.3.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@nextcloud/vue/-/vue-2.7.0.tgz#86661a4755c4f797edfcd74236c574092c5b3d6c"
-  integrity sha512-iZxTUWsDvfQdi3FRqEBfv5MGqJPPISk9FEXhX98wnWX37YaDwx9qOpvAQo+/6bjVVwwu8E7oWJN24NE4rxWhBg==
+"@nextcloud/typings@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@nextcloud/typings/-/typings-1.0.0.tgz#055e56eb360866b5b4b2b0052ccfab8ffa2d95a8"
+  integrity sha512-r8SRvXszWTyKWEhVd3gx7eBAcCKwdoLlr+ZrR8hrSxs2nfH00de/QoGdo0n/Rcv/9mMtX/haJNd71KwODM2+uQ==
+  dependencies:
+    "@types/jquery" "2.0.54"
+
+"@nextcloud/vue@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@nextcloud/vue/-/vue-3.0.0.tgz#d8cfb55d095d048a0dd4088fd486d48dcdcdad69"
+  integrity sha512-KkS+gM60jLsRbP93V95tsRvj66l/MuGMYcXWgNC4gh2C4e1DgPIFkU35nWFomLEsvu20Hr15ga01LjsF9r38+Q==
   dependencies:
     "@nextcloud/auth" "^1.2.3"
     "@nextcloud/axios" "^1.3.2"
+    "@nextcloud/browser-storage" "^0.1.1"
     "@nextcloud/capabilities" "^1.0.2"
-    "@nextcloud/dialogs" "^2.0.1"
+    "@nextcloud/dialogs" "^3.0.0"
     "@nextcloud/event-bus" "^1.1.4"
     "@nextcloud/l10n" "^1.2.3"
     "@nextcloud/router" "^1.0.2"
     core-js "^3.6.5"
     debounce "1.2.0"
     emoji-mart-vue-fast "^7.0.4"
+    escape-html "^1.0.3"
     hammerjs "^2.0.8"
     linkifyjs "~2.1.9"
     md5 "^2.2.1"
     regenerator-runtime "^0.13.5"
+    string-length "^4.0.1"
+    striptags "^3.1.1"
+    tributejs "^5.1.3"
     v-click-outside "^3.0.1"
     v-tooltip "^2.0.3"
     vue "^2.6.11"
@@ -3355,6 +3374,11 @@ core-js-compat@^3.6.2, core-js-compat@^3.6.5:
   dependencies:
     browserslist "^4.8.5"
     semver "7.0.0"
+
+core-js@3.6.1:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.1.tgz#39d5e2e346258cc01eb7d44345b1c3c014ca3f05"
+  integrity sha512-186WjSik2iTGfDjfdCZAxv2ormxtKgemjC3SI6PL31qOA0j5LhTDVjHChccoc7brwLvpvLPiMyRlcO88C4l1QQ==
 
 core-js@^2.4.0, core-js@^2.5.7:
   version "2.6.11"
@@ -9916,6 +9940,11 @@ strip-json-comments@^3.0.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.1.1.tgz#31f1281b3832630434831c310c01cccda8cbe006"
 
+striptags@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/striptags/-/striptags-3.1.1.tgz#c8c3e7fdd6fb4bb3a32a3b752e5b5e3e38093ebd"
+  integrity sha1-yMPn/db7S7OjKjt1LltePjgJPr0=
+
 style-search@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
@@ -10312,6 +10341,11 @@ tr46@^2.0.2:
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-2.0.2.tgz#03273586def1595ae08fedb38d7733cee91d2479"
   dependencies:
     punycode "^2.1.1"
+
+tributejs@^5.1.3:
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/tributejs/-/tributejs-5.1.3.tgz#980600fc72865be5868893078b4bfde721129eae"
+  integrity sha512-B5CXihaVzXw+1UHhNFyAwUTMDk1EfoLP5Tj1VhD9yybZ1I8DZJEv8tZ1l0RJo0t0tk9ZhR8eG5tEsaCvRigmdQ==
 
 trim-newlines@^1.0.0:
   version "1.0.0"
