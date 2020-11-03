@@ -1252,9 +1252,9 @@
     "@types/jquery" "2.0.54"
 
 "@nextcloud/vue@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@nextcloud/vue/-/vue-3.1.1.tgz#e90b885dfee203e3d903a7e5f022f32711f30589"
-  integrity sha512-DA3zi5QMef9bsBCRfNRlxd3eK2lQihV0k9q6/aFoc9Hyok0B2asOwaWuvFjsOaq4fL9VbIOfnHhhloYjJBA/eA==
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@nextcloud/vue/-/vue-3.1.2.tgz#d2ff6e3d8bf5a75c44dccddf7ecda0f088921e30"
+  integrity sha512-47SN1veuU7L6urCPbJg6vrPhkInqgR9PrNU6mMw9f/r5QZOky0eGHVbyB8dkPyfQMvoDvfVNnpcVl2/pERvuvg==
   dependencies:
     "@nextcloud/auth" "^1.2.3"
     "@nextcloud/axios" "^1.3.2"
@@ -1266,7 +1266,7 @@
     "@nextcloud/router" "^1.0.2"
     core-js "^3.6.5"
     debounce "1.2.0"
-    emoji-mart-vue-fast "^7.0.4"
+    emoji-mart-vue-fast "^7.0.7"
     escape-html "^1.0.3"
     hammerjs "^2.0.8"
     linkifyjs "~2.1.9"
@@ -4166,10 +4166,10 @@ emittery@^0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/emittery/-/emittery-0.7.1.tgz#c02375a927a40948c0345cc903072597f5270451"
 
-emoji-mart-vue-fast@^7.0.4:
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/emoji-mart-vue-fast/-/emoji-mart-vue-fast-7.0.4.tgz#886562068d3bf34af5bb9d64a5ab78b9f2a74c1a"
-  integrity sha512-VZuyclCe7ZNPhSvt7WT258MscqRBZTB2Is/7vBilCXgpiZqByaA4AhM1xdIIZZik/aA+5BQiZVmbsDK0jk78Eg==
+emoji-mart-vue-fast@^7.0.7:
+  version "7.0.7"
+  resolved "https://registry.yarnpkg.com/emoji-mart-vue-fast/-/emoji-mart-vue-fast-7.0.7.tgz#4c3bebfb27d08be7621f1100e890ad619d77a232"
+  integrity sha512-Nrk4IOjKcKKYyMnRm4lreEiPpvDX+h3FKI86SYs05dCFZ0WZIMTGok26dtWvJqseTThS1UghsNEjM4HrfDjIJg==
   dependencies:
     "@babel/polyfill" "7.2.5"
     "@babel/runtime" "7.3.4"
