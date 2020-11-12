@@ -48,11 +48,11 @@
 				</p>
 			</div>
 			<Actions v-if="gotMenu" :force-menu="true" menu-align="right">
-				<ActionButton v-for="(m, id) in itemMenu"
-					:key="id"
+				<ActionButton v-for="(m, menuItemId) in itemMenu"
+					:key="menuItemId"
 					:icon="m.icon"
 					:close-after-click="true"
-					@click.prevent.stop="$emit(id, item)">
+					@click.prevent.stop="$emit(menuItemId, item)">
 					{{ m.text }}
 				</ActionButton>
 			</Actions>
