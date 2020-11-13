@@ -101,11 +101,11 @@ export default {
 			default: undefined,
 		},
 		/**
-		 * Is the avatarUsername not a user's name? (optional, true by default)
+		 * Is the avatarUsername not a user's name? (optional, false by default)
 		 */
 		avatarIsNoUser: {
 			type: Boolean,
-			default: true,
+			default: false,
 		},
 		/**
 		 * Small icon to display on the bottom-right corner of the avatar (optional)
