@@ -51,6 +51,7 @@ const itemList = [
 		targetUrl: 'https://target.org', // the item element is a link to this URL
 		avatarUrl: 'https://avatar.url/img.png', // used if avatarUsername is not defined
 		avatarUsername: 'Robert', // used if avatarUrl is not defined
+		avatarIsNoUser: true, // passed to the Avatar component in WidgetItem component
 		overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor), // optional, small icon to display on the bottom-right corner of the avatar
 		mainText: 'First item text',
 		subText: 'First item subtext',
@@ -142,8 +143,8 @@ export default {
 ```vue
 <template>
 	<DashboardWidget :items="items"
-		:showMoreUrl="'https://nextcloud.com'"
-		:itemMenu="itemMenu"
+		:show-more-url="'https://nextcloud.com'"
+		:item-menu="itemMenu"
 		@hide="onHide"
 		@markDone="onMarkDone"
 		:loading="state === 'loading'">
@@ -162,6 +163,7 @@ const myItems = [
 		targetUrl: 'https://target.org',
 		avatarUrl: 'https://avatar.url/img.png',
 		avatarUsername: 'Robert',
+		avatarIsNoUser: true,
 		overlayIconUrl: generateUrl('/svg/core/actions/sound?color=' + this.themingColor),
 		mainText: 'First item text',
 		subText: 'First item subtext',
@@ -234,6 +236,7 @@ It has an optional context menu.
 * targetUrl: The item element is a link to this URL.
 * avatarUrl: Where to get the avatar image. Used if avatarUsername is not defined.
 * avatarUsername: Name to provide to the Avatar. Used if avatarUrl is not defined.
+* avatarIsNoUser: Is the named a Nextcloud user name? If yes, the user's avatar image will be displayed. This value is passed to the Avatar component in WidgetItem component.
 * overlayIconUrl: Small icon to display on the bottom-right corner of the avatar. Optional.
 * mainText
 * subText
@@ -265,11 +268,11 @@ const itemMenu = {
 ```vue
 <template>
 	<DashboardWidgetItem
-		:targetUrl="targetUrl"
-		:avatarUrl="avatarUrl"
-		:overlayIconUrl="overlayIconUrl"
-		:mainText="mainText"
-		:subText="subText" />
+		:target-url="targetUrl"
+		:avatar-url="avatarUrl"
+		:overlay-icon-url="overlayIconUrl"
+		:main-text="mainText"
+		:sub-text="subText" />
 </template>
 
 <script>
@@ -304,12 +307,14 @@ export default {
 <template>
 	<DashboardWidgetItem
 		:id="myItemId"
-		:targetUrl="targetUrl"
-		:avatarUrl="avatarUrl"
-		:overlayIconUrl="overlayIconUrl"
-		:mainText="mainText"
-		:subText="subText"
-		:itemMenu="itemMenu"
+		:target-url="targetUrl"
+		:avatar-url="avatarUrl"
+		:avatar-username="avatarUsername"
+		:avatar-is-no-user="avatarIsNoUser"
+		:overlay-icon-url="overlayIconUrl"
+		:main-text="mainText"
+		:sub-text="subText"
+		:item-menu="itemMenu"
 		@hide="onHide"
 		@markDone="onMarkDone" />
 </template>
@@ -320,6 +325,8 @@ import { DashboardWidgetItem } from '@nextcloud/vue-dashboard'
 const myItemId = '123abc'
 const targetUrl = 'https://target.org'
 const avatarUrl = 'https://avatar.url/img.png'
+const avatarUsername = 'Johnny'
+const avatarIsNoUser = true
 const overlayIconUrl = generateUrl('/svg/core/actions/sound?color=' + this.themingColor)
 const mainText = 'I am an item'
 const subText = 'and i can talk'

@@ -33,6 +33,7 @@
 					:size="44"
 					:url="avatarUrl"
 					:user="avatarUsername"
+					:is-no-user="avatarIsNoUser"
 					:show-user-status="!gotOverlayIcon" />
 			</slot>
 			<img v-if="overlayIconUrl"
@@ -98,6 +99,13 @@ export default {
 		avatarUsername: {
 			type: String,
 			default: undefined,
+		},
+		/**
+		 * Is the avatarUsername not a user's name? (optional, false by default)
+		 */
+		avatarIsNoUser: {
+			type: Boolean,
+			default: false,
 		},
 		/**
 		 * Small icon to display on the bottom-right corner of the avatar (optional)
