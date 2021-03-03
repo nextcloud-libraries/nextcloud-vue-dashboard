@@ -12,8 +12,8 @@ npm install --save @nextcloud/vue-dashboard
 
 ```sh
 npm link
-yarn
-yarn build
+npm ci
+npm rn build
 
 # in your apps repo
 npm link @nextcloud/vue-dashboard

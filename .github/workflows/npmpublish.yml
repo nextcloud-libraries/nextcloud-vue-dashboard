@@ -12,8 +12,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: yarn
-      - run: yarn build
+      - run: npm ci
+      - run: npm run build
 
   publish-npm:
     needs: build
@@ -24,24 +24,9 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: yarn
-      - run: yarn build
+      - run: npm ci
+      - run: npm run build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
-  publish-gpr:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://npm.pkg.github.com/
-          scope: '@juliushaertl'
-      - run: yarn
-      - run: yarn build
-      - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
