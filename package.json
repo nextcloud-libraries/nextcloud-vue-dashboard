@@ -1,6 +1,6 @@
 {
 	"name": "@nextcloud/vue-dashboard",
-	"version": "1.0.1",
+	"version": "2.0.0",
 	"description": "Vue component for dashboard",
 	"keywords": [
 		"vuejs",
