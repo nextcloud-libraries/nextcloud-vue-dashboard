@@ -48,7 +48,7 @@
 					{{ subText }}
 				</p>
 			</div>
-			<Actions v-if="gotMenu" :force-menu="true" menu-align="right">
+			<Actions v-if="gotMenu" :force-menu="forceMenu" menu-align="right">
 				<ActionButton v-for="(m, menuItemId) in itemMenu"
 					:key="menuItemId"
 					:icon="m.icon"
@@ -134,6 +134,14 @@ export default {
 		itemMenu: {
 			type: Object,
 			default: () => { return {} },
+		},
+
+		/**
+		 * Specify whether the 3 dot menu is forced when only one action is present
+		 */
+		forceMenu: {
+			type: Boolean,
+			default: true,
 		},
 	},
 
