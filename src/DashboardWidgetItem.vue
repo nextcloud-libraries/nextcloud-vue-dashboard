@@ -27,14 +27,13 @@
 			:target="targetUrl ? '_blank' : undefined"
 			:class="{ 'item-list__entry': true, 'item-list__entry--has-actions-menu': gotMenu }"
 			@click="onLinkClick">
-			<slot name="avatar" :avatarUrl="avatarUrl" :avatarUsername="avatarUsername">
-				<Avatar
-					class="item-avatar"
+			<slot name="avatar" :avatar-url="avatarUrl" :avatar-username="avatarUsername">
+				<!-- <Avatar class="item-avatar"
 					:size="44"
 					:url="avatarUrl"
 					:user="avatarUsername"
 					:is-no-user="avatarIsNoUser"
-					:show-user-status="!gotOverlayIcon" />
+					:show-user-status="!gotOverlayIcon" /> -->
 			</slot>
 			<img v-if="overlayIconUrl"
 				class="item-icon"
@@ -62,13 +61,16 @@
 </template>
 
 <script>
-import Avatar from '@nextcloud/vue/dist/Components/Avatar'
+// import Avatar from '@nextcloud/vue/dist/Components/Avatar'
 import Actions from '@nextcloud/vue/dist/Components/Actions'
 import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
+
 export default {
 	name: 'DashboardWidgetItem',
 	components: {
-		Avatar, Actions, ActionButton,
+		// Avatar,
+		Actions,
+		ActionButton,
 	},
 
 	props: {

@@ -22,8 +22,7 @@
 
 <template>
 	<div>
-		<EmptyContent
-			v-if="showItemsAndEmptyContent && halfEmptyContentString && items.length !== 0"
+		<EmptyContent v-if="showItemsAndEmptyContent && halfEmptyContentString && items.length !== 0"
 			class="half-screen"
 			:icon="halfEmptyContentIcon">
 			<template #desc>
@@ -33,8 +32,7 @@
 		<ul>
 			<li v-for="item in displayedItems" :key="item.id">
 				<slot name="default" :item="item">
-					<DashboardWidgetItem
-						:id="item.id"
+					<DashboardWidgetItem :id="item.id"
 						:target-url="item.targetUrl"
 						:avatar-url="item.avatarUrl"
 						:avatar-username="item.avatarUsername"
@@ -49,9 +47,9 @@
 		</ul>
 		<div v-if="loading">
 			<div v-for="i in 7" :key="i" class="item-list__entry">
-				<Avatar class="item-avatar" :size="44" />
+				<!-- <Avatar class="item-avatar" :size="44" /> -->
 				<div class="item__details">
-					<h3> &nbsp; </h3>
+					<h3>&nbsp;</h3>
 					<p class="message">
 &nbsp;
 					</p>
@@ -59,8 +57,7 @@
 			</div>
 		</div>
 		<slot v-else-if="items.length === 0" name="empty-content">
-			<EmptyContent
-				v-if="emptyContentMessage"
+			<EmptyContent v-if="emptyContentMessage"
 				:icon="emptyContentIcon">
 				<template #desc>
 					{{ emptyContentMessage }}
@@ -78,14 +75,15 @@
 </template>
 
 <script>
-import DashboardWidgetItem from './DashboardWidgetItem'
-import Avatar from '@nextcloud/vue/dist/Components/Avatar'
+import DashboardWidgetItem from './DashboardWidgetItem.vue'
+
+// import Avatar from '@nextcloud/vue/dist/Components/Avatar'
 import EmptyContent from '@nextcloud/vue/dist/Components/EmptyContent'
 
 export default {
 	name: 'DashboardWidget',
 	components: {
-		Avatar,
+		// Avatar,
 		DashboardWidgetItem,
 		EmptyContent,
 	},

@@ -1,5 +1,5 @@
-import DashboardWidget from './DashboardWidget'
-import DashboardWidgetItem from './DashboardWidgetItem'
+import DashboardWidget from './DashboardWidget.vue'
+import DashboardWidgetItem from './DashboardWidgetItem.vue'
 
 export {
 	DashboardWidget,
