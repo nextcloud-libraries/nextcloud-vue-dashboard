@@ -1,5 +1,10 @@
 # Components for the nextcloud dashboard
 
+> **Warning**
+>
+> This library is deprecated as the components are now part of [@nextcloud/vue](https://nextcloud-vue-components.netlify.app/#/Components/Dashboard) starting with version 6.0.0.
+
+
 [![npm last version](https://img.shields.io/npm/v/@nextcloud/vue-dashboard.svg?style=flat-square)](https://www.npmjs.com/package/@nextcloud/vue-dashboard) [![Dependabot status](https://img.shields.io/badge/Dependabot-enabled-brightgreen.svg?longCache=true&style=flat-square&logo=dependabot)](https://dependabot.com)
 
 ## Installation
