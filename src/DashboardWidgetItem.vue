@@ -34,6 +34,7 @@
 					:url="avatarUrl"
 					:user="avatarUsername"
 					:is-no-user="avatarIsNoUser"
+					:disable-menu="targetUrl"
 					:show-user-status="!gotOverlayIcon" />
 			</slot>
 			<img v-if="overlayIconUrl"
